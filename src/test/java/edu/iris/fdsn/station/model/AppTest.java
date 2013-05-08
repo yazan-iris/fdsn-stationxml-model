@@ -1,5 +1,18 @@
 package edu.iris.fdsn.station.model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+import edu.iris.dmc.fdsn.station.model.FDSNStationXML;
+import edu.iris.dmc.fdsn.station.model.ObjectFactory;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -30,9 +43,18 @@ public class AppTest
 
     /**
      * Rigourous Test :-)
+     * @throws JAXBException 
      */
-    public void testApp()
+    public void testApp() throws JAXBException
     {
-        assertTrue( true );
+       
+        
+    }
+    
+    public void testApp2() throws JAXBException, FileNotFoundException
+    {
+     
+        
+        
     }
 }

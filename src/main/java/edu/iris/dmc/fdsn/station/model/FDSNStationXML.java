@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -58,6 +59,7 @@ import org.w3c.dom.Element;
  * 
  * 
  */
+@XmlRootElement(name="FDSNStationXML")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RootType", propOrder = { "source", "sender", "module",
 		"moduleURI", "created", "network", "any" })
@@ -225,7 +227,7 @@ public class FDSNStationXML {
 		int index = this.getNetwork().indexOf(network);
 		if (index >= 0) {
 			Network n = this.getNetwork().get(index);
-			for (Station s : network.getStation()) {
+			for (Station s : network.getStations()) {
 				n.merge(s);
 			}
 		} else {

@@ -9,6 +9,8 @@ package edu.iris.dmc.fdsn.station.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -141,20 +143,24 @@ public class Channel extends BaseNodeType {
 		return this.station;
 	}
 
+	public void afterUnmarshal(Unmarshaller u, Object parent) {
+		this.station = (Station) parent;
+	}
+
 	public void setStation(Station station) {
 		this.station = station;
 	}
 
-	
-	public void add(Comment comment){
-		if(comment==null){
+	public void add(Comment comment) {
+		if (comment == null) {
 			return;
 		}
-		if(this.comment==null){
+		if (this.comment == null) {
 			this.comment = new ArrayList<Comment>();
 		}
 		this.comment.add(comment);
 	}
+
 	/**
 	 * Gets the value of the externalReference property.
 	 * 

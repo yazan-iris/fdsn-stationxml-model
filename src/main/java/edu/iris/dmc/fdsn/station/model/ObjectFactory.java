@@ -404,9 +404,12 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link FDSNStationXML }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.fdsn.org/xml/station/1", name = "FDSNStationXML")
+    /*@XmlElementDecl(namespace = "http://www.fdsn.org/xml/station/1", name = "FDSNStationXML")
     public JAXBElement<FDSNStationXML> createFDSNStationXML(FDSNStationXML value) {
         return new JAXBElement<FDSNStationXML>(_FDSNStationXML_QNAME, FDSNStationXML.class, null, value);
+    }*/
+   // @XmlElementDecl(namespace = "http://www.fdsn.org/xml/station/1", name = "FDSNStationXML")
+    public FDSNStationXML createFDSNStationXML() {
+        return new FDSNStationXML();
     }
-
 }

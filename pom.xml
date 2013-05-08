@@ -4,7 +4,7 @@
 
 	<groupId>edu.iris.fdsn.station</groupId>
 	<artifactId>fdsn-stationxml-model</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 
 	<name>model</name>
@@ -66,12 +66,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
-							<goal>jar</goal>
+							<goal>jar-no-fork</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -88,12 +89,12 @@
 		<repository>
 			<id>releases</id>
 			<name>Internal releases</name>
-			<url>http://marvin:8080/nexus/content/repositories/releases</url>
+			<url>http://marvin2:8080/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Internal Snapshots</name>
-			<url>http://marvin:8080/nexus/content/repositories/snapshots</url>
+			<url>http://marvin2:8080/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<dependencies>

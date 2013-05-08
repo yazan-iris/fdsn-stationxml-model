@@ -15,7 +15,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * This type represents the Network layer, all station metadata is contained
  * within this element. The official name of the network or other descriptive
@@ -48,23 +47,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NetworkType", propOrder = {
-    "totalNumberStations",
-    "selectedNumberStations",
-    "station"
-})
-public class Network
-    extends BaseNodeType
-{
+@XmlType(name = "NetworkType", propOrder = { "totalNumberStations",
+		"selectedNumberStations", "station" })
+public class Network extends BaseNodeType {
 
-    @XmlElement(name = "TotalNumberStations")
-    protected BigInteger totalNumberStations;
-    @XmlElement(name = "SelectedNumberStations")
-    protected BigInteger selectedNumberStations;
-    @XmlElement(name = "Station")
-    protected List<Station> station;
-    
-
+	@XmlElement(name = "TotalNumberStations")
+	protected BigInteger totalNumberStations;
+	@XmlElement(name = "SelectedNumberStations")
+	protected BigInteger selectedNumberStations;
+	@XmlElement(name = "Station")
+	protected List<Station> stations;
 
 	/**
 	 * Gets the value of the totalNumberStations property.
@@ -130,49 +122,58 @@ public class Network
 	 * 
 	 * 
 	 */
-	public List<Station> getStation() {
-		return this.station;
+	public List<Station> getStations() {
+		return this.stations;
 	}
 
 	public void addStation(Station station) {
 		if (station == null) {
 			return;
 		}
-
-		if (this.station == null) {
-			this.station = new ArrayList<Station>();
+		if (this.stations == null) {
+			this.stations = new ArrayList<Station>();
 		}
-		
 		station.setNetwork(this);
-		this.station.add(station);
+		this.stations.add(station);
 	}
-	
-	
-	
+
+	public void addStations(List<Station> stations) {
+		if (stations == null) {
+			return;
+		}
+		if (this.stations == null) {
+			this.stations = new ArrayList<Station>();
+		}
+		for (Station s : stations) {
+			s.setNetwork(this);
+			this.stations.add(s);
+		}
+	}
+
 	public void merge(Station station) {
 		if (station == null) {
 			return;
 		}
 
-		if (this.station == null) {
-			this.station = new ArrayList<Station>();
+		if (this.stations == null) {
+			this.stations = new ArrayList<Station>();
 			this.addStation(station);
 			return;
 		}
 		station.setNetwork(this);
 
-		int index = this.station.indexOf(station);
+		int index = this.stations.indexOf(station);
 
-		
-		if(index<0){
+		if (index < 0) {
 			this.addStation(station);
-		}else{
-			Station s = this.station.get(index);
-			for(Channel c:station.getChannel()){
+		} else {
+			Station s = this.stations.get(index);
+			for (Channel c : station.getChannels()) {
 				s.merge(c);
 			}
 		}
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -195,23 +196,23 @@ public class Network
 				return false;
 		} else if (!code.equals(other.code))
 			return false;
-		
-		if(description==null){
+
+		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
-			return false;		
-		
-		if (this.getStartTime() == null) {
-			if (other.getStartTime() != null)
-				return false;
-		} else if (!getStartTime().equals(other.getStartTime()))
 			return false;
-		
-		if (this.getEndTime() == null) {
-			if (other.getEndTime() != null)
+
+		if (this.getStartDate() == null) {
+			if (other.getStartDate() != null)
 				return false;
-		} else if (!getEndTime().equals(other.getEndTime()))
+		} else if (!getStartDate().equals(other.getStartDate()))
+			return false;
+
+		if (this.getEndDate() == null) {
+			if (other.getEndDate() != null)
+				return false;
+		} else if (!getEndDate().equals(other.getEndDate()))
 			return false;
 
 		return true;
@@ -221,6 +222,5 @@ public class Network
 	public String toString() {
 		return "Network [code=" + code + "]";
 	}
-	
-	
+
 }

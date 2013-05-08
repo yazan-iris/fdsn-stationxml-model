@@ -242,13 +242,7 @@ public class BaseNodeType {
     public XMLGregorianCalendar getStartDate() {
         return startDate;
     }
-    
-    public Date getStartTime() {
-    	if(startDate==null){
-    		return null;
-    	}
-        return startDate.toGregorianCalendar().getTime();
-    }
+
 
     /**
      * Sets the value of the startDate property.
@@ -274,12 +268,7 @@ public class BaseNodeType {
         return endDate;
     }
     
-    public Date getEndTime() {
-    	if(endDate==null){
-    		return null;
-    	}
-        return endDate.toGregorianCalendar().getTime();
-    }
+   
 
     /**
      * Sets the value of the endDate property.

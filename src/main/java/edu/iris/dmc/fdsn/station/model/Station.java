@@ -10,6 +10,8 @@ package edu.iris.dmc.fdsn.station.model;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -106,7 +108,7 @@ public class Station extends BaseNodeType {
 	@XmlElement(name = "ExternalReference")
 	protected List<ExternalReferenceType> externalReference;
 	@XmlElement(name = "Channel")
-	protected List<Channel> channel;
+	protected List<Channel> channels;
 
 	@XmlTransient
 	private Network network;
@@ -119,12 +121,16 @@ public class Station extends BaseNodeType {
 		this.network = network;
 	}
 
+	public void afterUnmarshal(Unmarshaller u, Object parent) {
+		this.network = (Network) parent;
+	}
+
 	public void addChannel(Channel channel) {
 		channel.setStation(this);
-		if (this.channel == null) {
-			this.channel = new ArrayList<Channel>();
+		if (this.channels == null) {
+			this.channels = new ArrayList<Channel>();
 		}
-		this.channel.add(channel);
+		this.channels.add(channel);
 	}
 
 	public void merge(Channel channel) {
@@ -132,11 +138,11 @@ public class Station extends BaseNodeType {
 			return;
 		}
 
-		int index = this.channel.indexOf(channel);
-		Channel c = this.channel.get(index);
+		int index = this.channels.indexOf(channel);
+		Channel c = this.channels.get(index);
 
 		if (c == null) {
-			this.channel.add(c);
+			this.channels.add(c);
 			return;
 		}
 		// TODO:what should go here??????????????????????????
@@ -475,26 +481,16 @@ public class Station extends BaseNodeType {
 	 * 
 	 * 
 	 */
-	public List<Channel> getChannel() {
-		if (channel == null) {
-			channel = new ArrayList<Channel>();
-		}
-		return this.channel;
+	public List<Channel> getChannels() {
+		return this.channels;
 	}
 
-	public Channel getChannel(String code, String location) {
-		if (this.channel == null) {
-			return null;
-		}
-		for (Channel c : this.getChannel()) {
-			if (c.getCode().equals(code)
-					&& c.getLocationCode().equals(location)) {
-				return c;
-			}
-		}
-		return null;
-	}
-
+	/*
+	 * public Channel getChannel(String code, String location) { if
+	 * (this.channels == null) { return null; } for (Channel c : this.channels)
+	 * { if (c.getCode().equals(code) && c.getLocationCode().equals(location)) {
+	 * return c; } } return null; }
+	 */
 	/**
 	 * <p>
 	 * Java class for anonymous complex type.
