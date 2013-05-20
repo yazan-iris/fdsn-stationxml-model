@@ -48,7 +48,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NetworkType", propOrder = { "totalNumberStations",
-		"selectedNumberStations", "station" })
+		"selectedNumberStations", "stations" })
 public class Network extends BaseNodeType {
 
 	@XmlElement(name = "TotalNumberStations")

@@ -711,4 +711,11 @@ public class Channel extends BaseNodeType {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Channel [code=" + code + ", locationCode="
+				+ locationCode + ", startDate=" + startDate
+				+ ", endDate=" + endDate + "]";
+	}
+
 }

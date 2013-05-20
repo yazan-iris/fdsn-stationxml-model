@@ -76,7 +76,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "StationType", propOrder = { "latitude", "longitude",
 		"elevation", "site", "vault", "geology", "equipment", "operator",
 		"creationDate", "terminationDate", "totalNumberChannels",
-		"selectedNumberChannels", "externalReference", "channel" })
+		"selectedNumberChannels", "externalReference", "channels" })
 public class Station extends BaseNodeType {
 
 	@XmlElement(name = "Latitude", required = true)
@@ -121,9 +121,9 @@ public class Station extends BaseNodeType {
 		this.network = network;
 	}
 
-	public void afterUnmarshal(Unmarshaller u, Object parent) {
+	/*public void afterUnmarshal(Unmarshaller u, Object parent) {
 		this.network = (Network) parent;
-	}
+	}*/
 
 	public void addChannel(Channel channel) {
 		channel.setStation(this);
@@ -658,4 +658,15 @@ public class Station extends BaseNodeType {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Station [code=" + code + ", creationDate=" + creationDate
+				+ ", terminationDate=" + terminationDate
+				+ ", totalNumberChannels=" + totalNumberChannels
+				+ ", selectedNumberChannels=" + selectedNumberChannels+ "]";
+	}
+	
+	
+	
 }
