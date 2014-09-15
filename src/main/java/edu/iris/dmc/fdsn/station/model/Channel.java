@@ -627,6 +627,9 @@ public class Channel extends BaseNodeType {
 	 * 
 	 */
 	public String getLocationCode() {
+		if (locationCode != null) {
+			return locationCode.trim();
+		}
 		return locationCode;
 	}
 
