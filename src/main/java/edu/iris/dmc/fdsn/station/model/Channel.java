@@ -693,6 +693,12 @@ public class Channel extends BaseNodeType {
 		} else if (!station.equals(other.station))
 			return false;
 
+		if (locationCode == null) {
+			if (other.locationCode != null)
+				return false;
+		} else if (!locationCode.equals(other.locationCode))
+			return false;
+
 		if (code == null) {
 			if (other.code != null)
 				return false;
@@ -708,14 +714,14 @@ public class Channel extends BaseNodeType {
 				return false;
 		} else if (!startDate.equals(other.startDate))
 			return false;
+
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Channel [code=" + code + ", locationCode="
-				+ locationCode + ", startDate=" + startDate
-				+ ", endDate=" + endDate + "]";
+		return "Channel [code=" + code + ", locationCode=" + locationCode
+				+ ", startDate=" + startDate + ", endDate=" + endDate + "]";
 	}
 
 }

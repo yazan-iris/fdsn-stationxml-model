@@ -9,10 +9,14 @@ package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -57,6 +61,8 @@ public class Network extends BaseNodeType {
 	protected BigInteger selectedNumberStations;
 	@XmlElement(name = "Station")
 	protected List<Station> stations;
+	@XmlTransient
+	private FDSNStationXML rootDocument;
 
 	/**
 	 * Gets the value of the totalNumberStations property.
@@ -123,6 +129,9 @@ public class Network extends BaseNodeType {
 	 * 
 	 */
 	public List<Station> getStations() {
+		if (this.stations == null) {
+			return Collections.emptyList();
+		}
 		return this.stations;
 	}
 
@@ -174,6 +183,20 @@ public class Network extends BaseNodeType {
 		}
 	}
 
+	public FDSNStationXML getRootDocument() {
+		return rootDocument;
+	}
+	public void setParent() {
+		System.out.println(":::::::");
+	}
+	public void setRootDocument(FDSNStationXML rootDocument) {
+		this.rootDocument = rootDocument;
+	}
+
+	/*public void afterUnmarshal(Unmarshaller u, Object parent) {
+		this.rootDocument = (FDSNStationXML) parent;
+	}*/
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -197,12 +220,6 @@ public class Network extends BaseNodeType {
 		} else if (!code.equals(other.code))
 			return false;
 
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-
 		if (this.getStartDate() == null) {
 			if (other.getStartDate() != null)
 				return false;
@@ -220,7 +237,8 @@ public class Network extends BaseNodeType {
 
 	@Override
 	public String toString() {
-		return "Network [code=" + code + "]";
+		return "Network [startdate=" + startDate + ", enddate=" + endDate
+				+ ", code=" + code + "]";
 	}
 
 }

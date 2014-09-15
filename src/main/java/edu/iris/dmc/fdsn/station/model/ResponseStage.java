@@ -311,6 +311,9 @@ public class ResponseStage {
 	}
 	
 	public void add(Filter filter){
+		if(filter==null){
+			return;
+		}
 		if(filter instanceof PolesZeros){
 			this.setPolesZeros((PolesZeros)filter);
 		}else if(filter instanceof Coefficients){

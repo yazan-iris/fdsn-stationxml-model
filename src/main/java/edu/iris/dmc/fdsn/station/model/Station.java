@@ -661,8 +661,8 @@ public class Station extends BaseNodeType {
 
 	@Override
 	public String toString() {
-		return "Station [code=" + code + ", creationDate=" + creationDate
-				+ ", terminationDate=" + terminationDate
+		return "Station [code=" + code + ", startDate=" + startDate
+				+ ", endDate=" + endDate
 				+ ", totalNumberChannels=" + totalNumberChannels
 				+ ", selectedNumberChannels=" + selectedNumberChannels+ "]";
 	}
