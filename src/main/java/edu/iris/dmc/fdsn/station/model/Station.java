@@ -141,7 +141,8 @@ public class Station extends BaseNodeType {
 
 		int index = this.channels.indexOf(channel);
 		if (index < 0) {
-			return;//should throw an error instead
+			this.channels.add(channel);
+			return;
 		}
 		Channel c = this.channels.get(index);
 
