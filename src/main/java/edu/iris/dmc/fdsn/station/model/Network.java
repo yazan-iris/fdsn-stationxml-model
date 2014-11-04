@@ -187,15 +187,15 @@ public class Network extends BaseNodeType {
 		return rootDocument;
 	}
 	public void setParent() {
-		System.out.println(":::::::");
+		//System.out.println(":::::::");
 	}
 	public void setRootDocument(FDSNStationXML rootDocument) {
 		this.rootDocument = rootDocument;
 	}
 
-	/*public void afterUnmarshal(Unmarshaller u, Object parent) {
+	public void afterUnmarshal(Unmarshaller u, Object parent) {
 		this.rootDocument = (FDSNStationXML) parent;
-	}*/
+	}
 
 	@Override
 	public int hashCode() {

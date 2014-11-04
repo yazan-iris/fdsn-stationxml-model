@@ -121,9 +121,10 @@ public class Station extends BaseNodeType {
 		this.network = network;
 	}
 
-	/*public void afterUnmarshal(Unmarshaller u, Object parent) {
-		this.network = (Network) parent;
-	}*/
+	/*
+	 * public void afterUnmarshal(Unmarshaller u, Object parent) { this.network
+	 * = (Network) parent; }
+	 */
 
 	public void addChannel(Channel channel) {
 		channel.setStation(this);
@@ -139,14 +140,15 @@ public class Station extends BaseNodeType {
 		}
 
 		int index = this.channels.indexOf(channel);
+		if (index < 0) {
+			return;//should throw an error instead
+		}
 		Channel c = this.channels.get(index);
 
 		if (c == null) {
 			this.channels.add(c);
 			return;
 		}
-		// TODO:what should go here??????????????????????????
-
 	}
 
 	public void add(Comment comment) {
@@ -662,11 +664,9 @@ public class Station extends BaseNodeType {
 	@Override
 	public String toString() {
 		return "Station [code=" + code + ", startDate=" + startDate
-				+ ", endDate=" + endDate
-				+ ", totalNumberChannels=" + totalNumberChannels
-				+ ", selectedNumberChannels=" + selectedNumberChannels+ "]";
+				+ ", endDate=" + endDate + ", totalNumberChannels="
+				+ totalNumberChannels + ", selectedNumberChannels="
+				+ selectedNumberChannels + "]";
 	}
-	
-	
-	
+
 }
