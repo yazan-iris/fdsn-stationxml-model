@@ -144,12 +144,7 @@ public class Station extends BaseNodeType {
 			this.channels.add(channel);
 			return;
 		}
-		Channel c = this.channels.get(index);
-
-		if (c == null) {
-			this.channels.add(c);
-			return;
-		}
+		// if you get here, duplicate channels, so ignore
 	}
 
 	public void add(Comment comment) {

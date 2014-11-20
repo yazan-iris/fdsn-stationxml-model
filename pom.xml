@@ -4,7 +4,7 @@
 
 	<groupId>edu.iris.fdsn.station</groupId>
 	<artifactId>fdsn-stationxml-model</artifactId>
-	<version>1.4.2-SNAPSHOT</version>
+	<version>1.4.2</version>
 	<packaging>jar</packaging>
 
 	<name>model</name>
