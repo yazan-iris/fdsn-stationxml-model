@@ -142,7 +142,7 @@ public class Network extends BaseNodeType {
 		if (this.stations == null) {
 			this.stations = new ArrayList<Station>();
 		}
-		station.setNetwork(this);
+		station.setParent(this);
 		this.stations.add(station);
 	}
 
@@ -154,7 +154,7 @@ public class Network extends BaseNodeType {
 			this.stations = new ArrayList<Station>();
 		}
 		for (Station s : stations) {
-			s.setNetwork(this);
+			s.setParent(this);
 			this.stations.add(s);
 		}
 	}
@@ -169,7 +169,7 @@ public class Network extends BaseNodeType {
 			this.addStation(station);
 			return;
 		}
-		station.setNetwork(this);
+		station.setParent(this);
 
 		int index = this.stations.indexOf(station);
 
@@ -186,15 +186,9 @@ public class Network extends BaseNodeType {
 	public FDSNStationXML getRootDocument() {
 		return rootDocument;
 	}
-	public void setParent() {
-		//System.out.println(":::::::");
-	}
+
 	public void setRootDocument(FDSNStationXML rootDocument) {
 		this.rootDocument = rootDocument;
-	}
-
-	public void afterUnmarshal(Unmarshaller u, Object parent) {
-		this.rootDocument = (FDSNStationXML) parent;
 	}
 
 	@Override

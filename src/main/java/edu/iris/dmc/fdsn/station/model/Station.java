@@ -73,10 +73,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "StationType", propOrder = { "latitude", "longitude",
-		"elevation", "site", "vault", "geology", "equipment", "operator",
-		"creationDate", "terminationDate", "totalNumberChannels",
-		"selectedNumberChannels", "externalReference", "channels" })
+@XmlType(name = "StationType", propOrder = { "latitude", "longitude", "elevation", "site", "vault", "geology",
+		"equipment", "operator", "creationDate", "terminationDate", "totalNumberChannels", "selectedNumberChannels",
+		"externalReference", "channels" })
 public class Station extends BaseNodeType {
 
 	@XmlElement(name = "Latitude", required = true)
@@ -110,15 +109,8 @@ public class Station extends BaseNodeType {
 	@XmlElement(name = "Channel")
 	protected List<Channel> channels;
 
-	@XmlTransient
-	private Network network;
-
 	public Network getNetwork() {
-		return network;
-	}
-
-	public void setNetwork(Network network) {
-		this.network = network;
+		return (Network) this.parent;
 	}
 
 	/*
@@ -301,8 +293,8 @@ public class Station extends BaseNodeType {
 	 * 
 	 * 
 	 * <p>
-	 * Objects of the following type(s) are allowed in the list
-	 * {@link Equipment }
+	 * Objects of the following type(s) are allowed in the list {@link Equipment
+	 * }
 	 * 
 	 * 
 	 */
@@ -614,8 +606,7 @@ public class Station extends BaseNodeType {
 		int result = 1;
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result
-				+ ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		return result;
 	}
 
@@ -628,11 +619,12 @@ public class Station extends BaseNodeType {
 		if (getClass() != obj.getClass())
 			return false;
 		Station other = (Station) obj;
+		Network network = (Network) this.parent;
 		if (network == null) {
-			if (other.network != null) {
+			if (other.getParent() != null) {
 				return false;
 			}
-		} else if (!network.equals(other.network)) {
+		} else if (!network.equals(other.getParent())) {
 			return false;
 		}
 
@@ -659,10 +651,8 @@ public class Station extends BaseNodeType {
 
 	@Override
 	public String toString() {
-		return "Station [code=" + code + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", totalNumberChannels="
-				+ totalNumberChannels + ", selectedNumberChannels="
-				+ selectedNumberChannels + "]";
+		return "Station [code=" + code + ", startDate=" + startDate + ", endDate=" + endDate + ", totalNumberChannels="
+				+ totalNumberChannels + ", selectedNumberChannels=" + selectedNumberChannels + "]";
 	}
 
 }
