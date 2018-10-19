@@ -8,6 +8,7 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.Unmarshaller;
@@ -19,6 +20,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 
 /**
  * Equivalent to SEED blockette 52 and parent element for the related the
@@ -88,13 +91,23 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  * 
  */
+
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ChannelType", propOrder = { "externalReference", "latitude",
-		"longitude", "elevation", "depth", "azimuth", "dip", "type",
-		"sampleRate", "sampleRateRatio", "storageFormat", "clockDrift",
-		"calibrationUnits", "sensor", "preAmplifier", "dataLogger",
-		"equipment", "response" })
+@XmlType(name = "ChannelType", propOrder = { "code", "description", "comment", "externalReference", "latitude",
+		"longitude", "elevation", "depth", "azimuth", "dip", "type", "sampleRate", "sampleRateRatio", "storageFormat",
+		"clockDrift", "calibrationUnits", "sensor", "preAmplifier", "dataLogger", "equipment", "response" })
 public class Channel extends BaseNodeType {
+
+
+	@XmlAttribute(name = "startDate", required = true)
+	protected XMLGregorianCalendar startDate;
+	@XmlAttribute(name = "endDate")
+	protected XMLGregorianCalendar endDate;
+
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "Comment")
+	protected List<Comment> comment;
 
 	@XmlElement(name = "ExternalReference")
 	protected List<ExternalReferenceType> externalReference;
@@ -104,6 +117,7 @@ public class Channel extends BaseNodeType {
 	protected Longitude longitude;
 	@XmlElement(name = "Elevation", required = true)
 	protected Distance elevation;
+
 	@XmlElement(name = "Depth", required = true)
 	protected Distance depth;
 	@XmlElement(name = "Azimuth")
@@ -121,8 +135,11 @@ public class Channel extends BaseNodeType {
 	protected String storageFormat;
 	@XmlElement(name = "ClockDrift")
 	protected Channel.ClockDrift clockDrift;
+
 	@XmlElement(name = "CalibrationUnits")
 	protected Units calibrationUnits;
+
+	//@Valid
 	@XmlElement(name = "Sensor")
 	protected Equipment sensor;
 	@XmlElement(name = "PreAmplifier")
@@ -133,11 +150,31 @@ public class Channel extends BaseNodeType {
 	protected Equipment equipment;
 	@XmlElement(name = "Response")
 	protected Response response;
+
+	@XmlAttribute(name = "code", required = true)
+	protected String code;
+
 	@XmlAttribute(name = "locationCode", required = true)
 	protected String locationCode;
 
+	@XmlAttribute(name = "alternateCode")
+	protected String alternateCode;
+	@XmlAttribute(name = "historicalCode")
+	protected String historicalCode;
+
 	@XmlTransient
 	private Station station;
+
+	@XmlTransient
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Station getStation() {
 		return this.station;
@@ -189,6 +226,66 @@ public class Channel extends BaseNodeType {
 			externalReference = new ArrayList<ExternalReferenceType>();
 		}
 		return this.externalReference;
+	}
+
+	public XMLGregorianCalendar getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(XMLGregorianCalendar startDate) {
+		this.startDate = startDate;
+	}
+
+	public XMLGregorianCalendar getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(XMLGregorianCalendar endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
+
+	/**
+	 * Gets the value of the comment property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the comment property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getComment().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Comment }
+	 * 
+	 * 
+	 */
+	public List<Comment> getComment() {
+		if (comment == null) {
+			comment = new ArrayList<Comment>();
+		}
+		return this.comment;
 	}
 
 	/**
@@ -608,6 +705,13 @@ public class Channel extends BaseNodeType {
 	public Response getResponse() {
 		return response;
 	}
+	
+	public void addStage(ResponseStage stage) {
+		if(this.getResponse()==null) {
+			this.response=new Response();
+		}
+		this.response.getStage().add(stage);
+	}
 
 	/**
 	 * Sets the value of the response property.
@@ -618,6 +722,63 @@ public class Channel extends BaseNodeType {
 	 */
 	public void setResponse(Response value) {
 		this.response = value;
+	}
+
+	/**
+	 * Gets the value of the code property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * Sets the value of the code property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCode(String value) {
+		this.code = value;
+	}
+
+	public String getAlternateCode() {
+		return alternateCode;
+	}
+
+	/**
+	 * Sets the value of the alternateCode property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAlternateCode(String value) {
+		this.alternateCode = value;
+	}
+
+	/**
+	 * Gets the value of the historicalCode property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getHistoricalCode() {
+		return historicalCode;
+	}
+
+	/**
+	 * Sets the value of the historicalCode property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setHistoricalCode(String value) {
+		this.historicalCode = value;
 	}
 
 	/**
@@ -676,8 +837,7 @@ public class Channel extends BaseNodeType {
 		int result = 1;
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result
-				+ ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		return result;
 	}
 
@@ -723,8 +883,8 @@ public class Channel extends BaseNodeType {
 
 	@Override
 	public String toString() {
-		return "Channel [code=" + code + ", locationCode=" + locationCode
-				+ ", startDate=" + startDate + ", endDate=" + endDate + "]";
+		return "Channel [code=" + code + ", locationCode=" + locationCode + ", startDate=" + startDate + ", endDate="
+				+ endDate + "]";
 	}
 
 }

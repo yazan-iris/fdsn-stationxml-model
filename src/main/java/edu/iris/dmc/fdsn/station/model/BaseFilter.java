@@ -19,9 +19,11 @@ import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
+
 
 
 /**
@@ -67,10 +69,15 @@ import org.w3c.dom.Element;
 })
 public class BaseFilter implements Filter{
 
+	@XmlTransient
+	private Long id;
+	
     @XmlElement(name = "Description")
     protected String description;
+
     @XmlElement(name = "InputUnits", required = true)
     protected Units inputUnits;
+
     @XmlElement(name = "OutputUnits", required = true)
     protected Units outputUnits;
     @XmlAnyElement(lax = true)
@@ -82,7 +89,18 @@ public class BaseFilter implements Filter{
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
+    
+    
+    
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
      * Gets the value of the description property.
      * 
      * @return

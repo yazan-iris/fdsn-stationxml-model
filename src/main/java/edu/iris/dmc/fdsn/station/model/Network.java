@@ -7,17 +7,22 @@
 
 package edu.iris.dmc.fdsn.station.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * This type represents the Network layer, all station metadata is contained
@@ -51,18 +56,171 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NetworkType", propOrder = { "totalNumberStations",
+@XmlType(name = "NetworkType", propOrder = { "code", "description", "comment", "totalNumberStations",
 		"selectedNumberStations", "stations" })
-public class Network extends BaseNodeType {
+public class Network extends BaseNodeType implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5226236597603445089L;
+
+	@XmlAttribute(name = "code", required = true)
+	// @XmlJavaTypeAdapter(value = StringAdapter.class)
+	protected String code;
+
+	@XmlAttribute(name = "alternateCode")
+	protected String alternateCode;
+	@XmlAttribute(name = "historicalCode")
+	protected String historicalCode;
+
+	@XmlAttribute(name = "startDate", required = true)
+	// @XmlSchemaType(name = "dateTime")
+	protected XMLGregorianCalendar startDate;
+	@XmlAttribute(name = "endDate")
+	protected XMLGregorianCalendar endDate;
+
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "Comment")
+	protected List<Comment> comment;
 
 	@XmlElement(name = "TotalNumberStations")
 	protected BigInteger totalNumberStations;
 	@XmlElement(name = "SelectedNumberStations")
 	protected BigInteger selectedNumberStations;
+
 	@XmlElement(name = "Station")
-	protected List<Station> stations;
+	protected List<Station> stations = new ArrayList<Station>();;
 	@XmlTransient
 	private FDSNStationXML rootDocument;
+
+	@XmlTransient
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * Gets the value of the code property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * Sets the value of the code property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCode(String value) {
+		this.code = value;
+	}
+
+	public String getAlternateCode() {
+		return alternateCode;
+	}
+
+	/**
+	 * Sets the value of the alternateCode property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAlternateCode(String value) {
+		this.alternateCode = value;
+	}
+
+	/**
+	 * Gets the value of the historicalCode property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getHistoricalCode() {
+		return historicalCode;
+	}
+
+	/**
+	 * Sets the value of the historicalCode property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setHistoricalCode(String value) {
+		this.historicalCode = value;
+	}
+
+	public XMLGregorianCalendar getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(XMLGregorianCalendar startDate) {
+		this.startDate = startDate;
+	}
+
+	public XMLGregorianCalendar getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(XMLGregorianCalendar endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
+
+	/**
+	 * Gets the value of the comment property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the comment property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getComment().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Comment }
+	 * 
+	 * 
+	 */
+	public List<Comment> getComment() {
+		if (comment == null) {
+			comment = new ArrayList<Comment>();
+		}
+		return this.comment;
+	}
 
 	/**
 	 * Gets the value of the totalNumberStations property.
@@ -139,10 +297,7 @@ public class Network extends BaseNodeType {
 		if (station == null) {
 			return;
 		}
-		if (this.stations == null) {
-			this.stations = new ArrayList<Station>();
-		}
-		station.setParent(this);
+		station.setNetwork(this);
 		this.stations.add(station);
 	}
 
@@ -154,7 +309,7 @@ public class Network extends BaseNodeType {
 			this.stations = new ArrayList<Station>();
 		}
 		for (Station s : stations) {
-			s.setParent(this);
+			s.setNetwork(this);
 			this.stations.add(s);
 		}
 	}
@@ -169,7 +324,7 @@ public class Network extends BaseNodeType {
 			this.addStation(station);
 			return;
 		}
-		station.setParent(this);
+		station.setNetwork(this);
 
 		int index = this.stations.indexOf(station);
 
@@ -187,8 +342,15 @@ public class Network extends BaseNodeType {
 		return rootDocument;
 	}
 
+	public void setParent() {
+	}
+
 	public void setRootDocument(FDSNStationXML rootDocument) {
 		this.rootDocument = rootDocument;
+	}
+
+	public void afterUnmarshal(Unmarshaller u, Object parent) {
+		this.rootDocument = (FDSNStationXML) parent;
 	}
 
 	@Override
@@ -231,8 +393,7 @@ public class Network extends BaseNodeType {
 
 	@Override
 	public String toString() {
-		return "Network [startdate=" + startDate + ", enddate=" + endDate
-				+ ", code=" + code + "]";
+		return "Network [startdate=" + startDate + ", enddate=" + endDate + ", code=" + code + "]";
 	}
 
 }

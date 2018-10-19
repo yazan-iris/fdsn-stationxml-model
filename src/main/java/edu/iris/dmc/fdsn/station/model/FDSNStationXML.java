@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -26,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
+
 
 /**
  * Top-level type for Station XML. Required field are Source (network ID of the
@@ -61,10 +63,9 @@ import org.w3c.dom.Element;
  * 
  * 
  */
-@XmlRootElement(name="FDSNStationXML")
+@XmlRootElement(name = "FDSNStationXML")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RootType", propOrder = { "source", "sender", "module",
-		"moduleURI", "created", "network", "any" })
+@XmlType(name = "RootType", propOrder = { "source", "sender", "module", "moduleURI", "created", "network", "any" })
 public class FDSNStationXML {
 
 	@XmlElement(name = "Source", required = true)
@@ -79,6 +80,7 @@ public class FDSNStationXML {
 	@XmlElement(name = "Created", required = true)
 	@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar created;
+
 	@XmlElement(name = "Network", required = true)
 	protected List<Network> network;
 	@XmlAnyElement(lax = true)

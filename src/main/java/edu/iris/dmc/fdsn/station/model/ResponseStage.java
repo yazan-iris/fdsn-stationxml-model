@@ -18,9 +18,11 @@ import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
+
 
 /**
  * This complex type represents channel response and covers SEED blockettes 53
@@ -59,10 +61,12 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ResponseStageType", propOrder = { "polesZeros",
-		"coefficients", "responseList", "fir", "polynomial", "decimation",
-		"stageGain", "any" })
+@XmlType(name = "ResponseStageType", propOrder = { "polesZeros", "coefficients", "responseList", "fir", "polynomial",
+		"decimation", "stageGain", "any" })
 public class ResponseStage {
+
+	@XmlTransient
+	private Long id;
 
 	@XmlElement(name = "PolesZeros")
 	protected PolesZeros polesZeros;
@@ -84,6 +88,54 @@ public class ResponseStage {
 	protected BigInteger number;
 	@XmlAnyAttribute
 	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Units[] getUnits() {
+		if (polesZeros != null) {
+			return new Units[] { polesZeros.getInputUnits(), polesZeros.getOutputUnits() };
+		}
+		if (responseList != null) {
+			return new Units[] { responseList.getInputUnits(), responseList.getOutputUnits() };
+		}
+		if (fir != null) {
+			return new Units[] { fir.getInputUnits(), fir.getOutputUnits() };
+		}
+		if (polynomial != null) {
+			return new Units[] { polynomial.getInputUnits(), polynomial.getOutputUnits() };
+		}
+		if (coefficients != null) {
+			return new Units[] { coefficients.getInputUnits(), coefficients.getOutputUnits() };
+		}
+		return null;
+	}
+
+	public List<Filter> getFilters() {
+		List<Filter> filters = new ArrayList<Filter>();
+		if (this.polesZeros != null) {
+			filters.add(this.polesZeros);
+		}
+		if (this.coefficients != null) {
+			filters.add(this.coefficients);
+		}
+		if (this.responseList != null) {
+			filters.add(this.responseList);
+		}
+		if (this.fir != null) {
+			filters.add(this.fir);
+		}
+		if (this.polynomial != null) {
+			filters.add(this.polynomial);
+		}
+
+		return filters;
+	}
 
 	/**
 	 * Gets the value of the polesZeros property.
@@ -173,9 +225,9 @@ public class ResponseStage {
 	public FIR getFIR() {
 		return this.fir;
 	}
-	
+
 	public void setFIR(FIR value) {
-		this.fir=value;
+		this.fir = value;
 	}
 
 	/**
@@ -309,25 +361,25 @@ public class ResponseStage {
 	public Map<QName, String> getOtherAttributes() {
 		return otherAttributes;
 	}
-	
-	public void add(Filter filter){
-		if(filter==null){
+
+	public void add(Filter filter) {
+		if (filter == null) {
 			return;
 		}
-		if(filter instanceof PolesZeros){
-			this.setPolesZeros((PolesZeros)filter);
-		}else if(filter instanceof Coefficients){
-			this.setCoefficients((Coefficients)filter);
-		}else if(filter instanceof ResponseList){
-			this.setResponseList((ResponseList)filter);
-		}else if(filter instanceof FIR){
-			this.setFIR((FIR)filter);
-		}else if(filter instanceof Polynomial){
-			this.setPolynomial((Polynomial)filter);
-		}else if(filter instanceof Decimation){
-			this.setDecimation((Decimation)filter);
-		}else{
-			//:TODO what should be done here, throw an exception????????
+		if (filter instanceof PolesZeros) {
+			this.setPolesZeros((PolesZeros) filter);
+		} else if (filter instanceof Coefficients) {
+			this.setCoefficients((Coefficients) filter);
+		} else if (filter instanceof ResponseList) {
+			this.setResponseList((ResponseList) filter);
+		} else if (filter instanceof FIR) {
+			this.setFIR((FIR) filter);
+		} else if (filter instanceof Polynomial) {
+			this.setPolynomial((Polynomial) filter);
+		} else if (filter instanceof Decimation) {
+			this.setDecimation((Decimation) filter);
+		} else {
+			// :TODO what should be done here, throw an exception????????
 		}
 	}
 

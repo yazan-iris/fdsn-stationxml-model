@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
@@ -59,10 +60,11 @@ public class Comment {
     @XmlElement(name = "Value", required = true)
     protected String value;
     @XmlElement(name = "BeginEffectiveTime")
-    @XmlSchemaType(name = "dateTime")
+    //@XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar beginEffectiveTime;
     @XmlElement(name = "EndEffectiveTime")
-    @XmlSchemaType(name = "dateTime")
+   // @XmlSchemaType(name = "dateTime")
+
     protected XMLGregorianCalendar endEffectiveTime;
     @XmlElement(name = "Author")
     protected List<PersonType> author;
@@ -105,12 +107,6 @@ public class Comment {
         return beginEffectiveTime;
     }
     
-    public Date getBeginEffectiveDate() {
-    	if(beginEffectiveTime==null){
-    		return null;
-    	}
-        return beginEffectiveTime.toGregorianCalendar().getTime();
-    }
 
     /**
      * Sets the value of the beginEffectiveTime property.
@@ -136,12 +132,6 @@ public class Comment {
         return endEffectiveTime;
     }
 
-    public Date getEndEffectiveDate() {
-    	if(endEffectiveTime==null){
-    		return null;
-    	}
-        return endEffectiveTime.toGregorianCalendar().getTime();
-    }
     
     /**
      * Sets the value of the endEffectiveTime property.

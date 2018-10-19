@@ -11,7 +11,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+
 
 /**
  * Complex type for sensitivity and frequency ranges.This complex type can be
@@ -48,15 +50,26 @@ import javax.xml.bind.annotation.XmlType;
 public class Gain {
 
 	@XmlElement(name = "Value")
-	protected Double value;
+	protected double value;
 	@XmlElement(name = "Frequency")
-	protected Double frequency;
+	protected double frequency;
+
+	@XmlTransient
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	/**
 	 * Gets the value of the value property.
 	 * 
 	 */
-	public Double getValue() {
+	public double getValue() {
 		return value;
 	}
 
@@ -64,7 +77,7 @@ public class Gain {
 	 * Sets the value of the value property.
 	 * 
 	 */
-	public void setValue(Double value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 
@@ -72,7 +85,7 @@ public class Gain {
 	 * Gets the value of the frequency property.
 	 * 
 	 */
-	public Double getFrequency() {
+	public double getFrequency() {
 		return frequency;
 	}
 
@@ -80,7 +93,7 @@ public class Gain {
 	 * Sets the value of the frequency property.
 	 * 
 	 */
-	public void setFrequency(Double value) {
+	public void setFrequency(double value) {
 		this.frequency = value;
 	}
 

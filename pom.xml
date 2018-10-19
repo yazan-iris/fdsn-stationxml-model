@@ -2,14 +2,34 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>edu.iris.fdsn.station</groupId>
+	<groupId>edu.iris.dmc</groupId>
 	<artifactId>fdsn-stationxml-model</artifactId>
-	<version>1.4.3-SNAPSHOT</version>
+	<version>1.4.6</version>
 	<packaging>jar</packaging>
 
-	<name>model</name>
-	<url>http://maven.apache.org</url>
-
+	<name>fdsn station xml model</name>
+	<url>http://www.iris.edu/</url>
+	<description>
+	Auto generated java object representation of the fdsn stationxml schema
+	</description>
+	<licenses>
+		<license>
+			<name>GNU General Public License (GPL)</name>
+			<url>http://www.gnu.org/licenses/gpl.txt</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:svn:http://somerepository.com/svn_repo/trunk</connection>
+		<developerConnection>scm:svn:https://somerepository.com/svn_repo/trunk</developerConnection>
+		<url>http://somerepository.com/view.cvs</url>
+	</scm>
+	<developers>
+		<developer>
+			<name>Yazan Suleiman</name>
+			<organization>Incorporated Research Institutions for Seismology</organization>
+			<organizationUrl>http://www.iris.edu/hq/</organizationUrl>
+		</developer>
+	</developers>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -31,25 +51,17 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<!-- see http://maven.apache.org/plugins/maven-javadoc-plugin/index.html 
-					for more info -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.8</version>
-				<configuration>
-					<!-- <helpfile>${basedir}/help.html</helpfile> -->
-				</configuration>
-
-				<!-- this will cause the javadocs to be jar'd at deploy or install -->
+				<version>3.0.0-M1</version>
 				<executions>
-					<execution>
-						<phase>verify</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-
+				<execution>
+					<id>attach-javadocs</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
 			</plugin>
 			<plugin>
 				<!-- NOTE: We don't need a groupId specification because the group is 
@@ -62,7 +74,6 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -77,26 +88,48 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
 
+	<profiles>
+		<profile>
+			<id>disable-java8-doclint</id>
+			<activation>
+				<jdk>[1.8,)</jdk>
+			</activation>
+			<properties>
+				<additionalparam>-Xdoclint:none</additionalparam>
+			</properties>
+		</profile>
+	</profiles>
 
-
-
-	<distributionManagement>
-
-		<repository>
-			<id>releases</id>
-			<name>Internal releases</name>
-			<url>http://marvin2:8080/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>Internal Snapshots</name>
-			<url>http://marvin2:8080/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -105,4 +138,15 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 </project>

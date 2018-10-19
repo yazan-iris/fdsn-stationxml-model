@@ -5,7 +5,6 @@
 // Generated on: 2012.11.05 at 01:15:36 PM PST 
 //
 
-
 package edu.iris.dmc.fdsn.station.model;
 
 import java.util.ArrayList;
@@ -17,15 +16,19 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
 
 /**
- * <p>Java class for ResponseType complex type.
+ * <p>
+ * Java class for ResponseType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="ResponseType">
@@ -48,148 +51,158 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ResponseType", propOrder = {
-    "instrumentSensitivity",
-    "instrumentPolynomial",
-    "stage",
-    "any"
-})
+@XmlType(name = "ResponseType", propOrder = { "instrumentSensitivity", "instrumentPolynomial", "stage", "any" })
 public class Response {
 
-    @XmlElement(name = "InstrumentSensitivity")
-    protected Sensitivity instrumentSensitivity;
-    @XmlElement(name = "InstrumentPolynomial")
-    protected Polynomial instrumentPolynomial;
-    @XmlElement(name = "Stage")
-    protected List<ResponseStage> stage;
-    @XmlAnyElement(lax = true)
-    protected List<Object> any;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlTransient
+	private Long id;
+	
+	@XmlElement(name = "InstrumentSensitivity")
+	protected Sensitivity instrumentSensitivity;
+	@XmlElement(name = "InstrumentPolynomial")
+	protected Polynomial instrumentPolynomial;
+	@XmlElement(name = "Stage")
+	protected List<ResponseStage> stage;
+	@XmlAnyElement(lax = true)
+	protected List<Object> any;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
-    /**
-     * Gets the value of the instrumentSensitivity property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Sensitivity }
-     *     
-     */
-    public Sensitivity getInstrumentSensitivity() {
-        return instrumentSensitivity;
-    }
+	
+	/*public void getOutputUnits() {
+		if (this.stage != null) {
+			for (ResponseStage stage : this.stage) {
+				stage.getCoefficients().getOutputUnits();
+			}
+		}
+	}*/
 
-    /**
-     * Sets the value of the instrumentSensitivity property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Sensitivity }
-     *     
-     */
-    public void setInstrumentSensitivity(Sensitivity value) {
-        this.instrumentSensitivity = value;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    /**
-     * Gets the value of the instrumentPolynomial property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Polynomial }
-     *     
-     */
-    public Polynomial getInstrumentPolynomial() {
-        return instrumentPolynomial;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    /**
-     * Sets the value of the instrumentPolynomial property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Polynomial }
-     *     
-     */
-    public void setInstrumentPolynomial(Polynomial value) {
-        this.instrumentPolynomial = value;
-    }
+	/**
+	 * Gets the value of the instrumentSensitivity property.
+	 * 
+	 * @return possible object is {@link Sensitivity }
+	 * 
+	 */
+	public Sensitivity getInstrumentSensitivity() {
+		return instrumentSensitivity;
+	}
 
-    /**
-     * Gets the value of the stage property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the stage property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getStage().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link ResponseStage }
-     * 
-     * 
-     */
-    public List<ResponseStage> getStage() {
-        if (stage == null) {
-            stage = new ArrayList<ResponseStage>();
-        }
-        return this.stage;
-    }
+	/**
+	 * Sets the value of the instrumentSensitivity property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Sensitivity }
+	 * 
+	 */
+	public void setInstrumentSensitivity(Sensitivity value) {
+		this.instrumentSensitivity = value;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link Object }
-     * 
-     * 
-     */
-    public List<Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the instrumentPolynomial property.
+	 * 
+	 * @return possible object is {@link Polynomial }
+	 * 
+	 */
+	public Polynomial getInstrumentPolynomial() {
+		return instrumentPolynomial;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
+	/**
+	 * Sets the value of the instrumentPolynomial property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Polynomial }
+	 * 
+	 */
+	public void setInstrumentPolynomial(Polynomial value) {
+		this.instrumentPolynomial = value;
+	}
+
+	/**
+	 * Gets the value of the stage property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the stage property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getStage().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link ResponseStage }
+	 * 
+	 * 
+	 */
+	public List<ResponseStage> getStage() {
+		if (stage == null) {
+			stage = new ArrayList<ResponseStage>();
+		}
+		return this.stage;
+	}
+
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link Object }
+	 * 
+	 * 
+	 */
+	public List<Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<Object>();
+		}
+		return this.any;
+	}
+
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed
+	 * property on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
 }

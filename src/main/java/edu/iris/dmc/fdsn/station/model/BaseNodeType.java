@@ -8,25 +8,23 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
+
 import org.w3c.dom.Element;
+
 
 /**
  * A base node type for derivation from: Network, Station and Channel types.
@@ -62,50 +60,27 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "BaseNodeType", propOrder = { "description", "comment", "dataAvailability", "any" })
+@XmlType(name = "BaseNodeType", propOrder = { "dataAvailability", "any" })
 @XmlSeeAlso({ Station.class, Network.class, Channel.class })
-public class BaseNodeType {
+public abstract class BaseNodeType implements NodeType{
 
-	@XmlElement(name = "Description")
-	protected String description;
-	@XmlElement(name = "Comment")
-	protected List<Comment> comment;
+	
+	
+	
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
-	@XmlAttribute(name = "code", required = true)
-	protected String code;
-	@XmlAttribute(name = "startDate", required = true)
-	@XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar startDate;
-	@XmlAttribute(name = "endDate")
-	@XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar endDate;
+	
+
 	@XmlAttribute(name = "restrictedStatus")
 	protected RestrictedStatusType restrictedStatus;
-	@XmlAttribute(name = "alternateCode")
-	protected String alternateCode;
-	@XmlAttribute(name = "historicalCode")
-	protected String historicalCode;
+	
 	@XmlAnyAttribute
 	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
 	@XmlElement(name = "DataAvailability")
 	protected DataAvailability dataAvailability;
-
-	@XmlTransient
-	protected Object parent;
-
-	public void afterUnmarshal(Unmarshaller unmarshaller, Object parent) {
-		this.parent = parent;
-	}
 	
-	public Object getParent() {
-		return parent;
-	}
 
-	public void setParent(Object parent) {
-		this.parent = parent;
-	}
 
 	/**
 	 * Gets the value of the dataAvailability property.
@@ -134,49 +109,7 @@ public class BaseNodeType {
 	 * @return possible object is {@link String }
 	 * 
 	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * Sets the value of the description property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setDescription(String value) {
-		this.description = value;
-	}
-
-	/**
-	 * Gets the value of the comment property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the comment property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getComment().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list {@link Comment }
-	 * 
-	 * 
-	 */
-	public List<Comment> getComment() {
-		if (comment == null) {
-			comment = new ArrayList<Comment>();
-		}
-		return this.comment;
-	}
+	
 
 	/**
 	 * Gets the value of the any property.
@@ -208,69 +141,9 @@ public class BaseNodeType {
 		return this.any;
 	}
 
-	/**
-	 * Gets the value of the code property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getCode() {
-		return code;
-	}
+	
 
-	/**
-	 * Sets the value of the code property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setCode(String value) {
-		this.code = value;
-	}
-
-	/**
-	 * Gets the value of the startDate property.
-	 * 
-	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public XMLGregorianCalendar getStartDate() {
-		return startDate;
-	}
-
-	/**
-	 * Sets the value of the startDate property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public void setStartDate(XMLGregorianCalendar value) {
-		this.startDate = value;
-	}
-
-	/**
-	 * Gets the value of the endDate property.
-	 * 
-	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public XMLGregorianCalendar getEndDate() {
-		return endDate;
-	}
-
-	/**
-	 * Sets the value of the endDate property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public void setEndDate(XMLGregorianCalendar value) {
-		this.endDate = value;
-	}
-
+	
 	/**
 	 * Gets the value of the restrictedStatus property.
 	 * 
@@ -298,41 +171,7 @@ public class BaseNodeType {
 	 * @return possible object is {@link String }
 	 * 
 	 */
-	public String getAlternateCode() {
-		return alternateCode;
-	}
-
-	/**
-	 * Sets the value of the alternateCode property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setAlternateCode(String value) {
-		this.alternateCode = value;
-	}
-
-	/**
-	 * Gets the value of the historicalCode property.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getHistoricalCode() {
-		return historicalCode;
-	}
-
-	/**
-	 * Sets the value of the historicalCode property.
-	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
-	 */
-	public void setHistoricalCode(String value) {
-		this.historicalCode = value;
-	}
+	
 
 	/**
 	 * Gets a map that contains attributes that aren't bound to any typed
@@ -351,5 +190,47 @@ public class BaseNodeType {
 	public Map<QName, String> getOtherAttributes() {
 		return otherAttributes;
 	}
+
+
+public enum LEVEL {
+
+	NETWORK("network", 1), STATION("station", 2), CHANNEL("channel", 3), RESPONSE("response", 4);
+
+	private int value;
+	private String name;
+
+	private LEVEL(int value) {
+		this(null, value);
+	}
+
+	private LEVEL(String name, int value) {
+		this.value = value;
+		this.name = name;
+	}
+
+	public int getValue() {
+		return this.value;
+	}
+
+	public static LEVEL parse(String value) {
+		if (value == null) {
+			throw new IllegalArgumentException();
+		}
+		if ("network".equalsIgnoreCase(value) || "net".equalsIgnoreCase(value)) {
+			return NETWORK;
+		}
+		if ("station".equalsIgnoreCase(value) || "sta".equalsIgnoreCase(value)) {
+			return STATION;
+		}
+		if ("channel".equalsIgnoreCase(value) || "cha".equalsIgnoreCase(value)) {
+			return CHANNEL;
+		}
+		if ("response".equalsIgnoreCase(value) || "resp".equalsIgnoreCase(value)) {
+			return RESPONSE;
+		}
+		throw new IllegalArgumentException();
+	}
+}
+
 
 }

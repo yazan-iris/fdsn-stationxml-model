@@ -61,9 +61,9 @@ public class Float {
     @XmlAttribute(name = "unit")
     protected String unit;
     @XmlAttribute(name = "plusError")
-    protected Double plusError;
+    protected double plusError;
     @XmlAttribute(name = "minusError")
-    protected Double minusError;
+    protected double minusError;
 
     /**
      * Gets the value of the value property.
@@ -113,7 +113,7 @@ public class Float {
      *     {@link Double }
      *     
      */
-    public Double getPlusError() {
+    public double getPlusError() {
         return plusError;
     }
 
@@ -125,7 +125,7 @@ public class Float {
      *     {@link Double }
      *     
      */
-    public void setPlusError(Double value) {
+    public void setPlusError(double value) {
         this.plusError = value;
     }
 
@@ -137,7 +137,7 @@ public class Float {
      *     {@link Double }
      *     
      */
-    public Double getMinusError() {
+    public double getMinusError() {
         return minusError;
     }
 
@@ -149,7 +149,7 @@ public class Float {
      *     {@link Double }
      *     
      */
-    public void setMinusError(Double value) {
+    public void setMinusError(double value) {
         this.minusError = value;
     }
 

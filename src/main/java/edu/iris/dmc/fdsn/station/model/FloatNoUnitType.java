@@ -38,16 +38,16 @@ import javax.xml.bind.annotation.XmlValue;
     "value"
 })
 @XmlSeeAlso({
-    edu.iris.dmc.fdsn.station.model.Polynomial.Coefficient.class
+    edu.iris.dmc.fdsn.station.model.Coefficient.class
 })
 public class FloatNoUnitType {
 
     @XmlValue
     protected double value;
     @XmlAttribute(name = "plusError")
-    protected Double plusError;
+    protected double plusError;
     @XmlAttribute(name = "minusError")
-    protected Double minusError;
+    protected double minusError;
 
     /**
      * Gets the value of the value property.
@@ -73,7 +73,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public Double getPlusError() {
+    public double getPlusError() {
         return plusError;
     }
 
@@ -97,7 +97,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public Double getMinusError() {
+    public double getMinusError() {
         return minusError;
     }
 
