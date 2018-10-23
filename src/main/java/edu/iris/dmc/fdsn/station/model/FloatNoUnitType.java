@@ -85,7 +85,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public void setPlusError(Double value) {
+    public void setPlusError(double value) {
         this.plusError = value;
     }
 
@@ -109,7 +109,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public void setMinusError(Double value) {
+    public void setMinusError(double value) {
         this.minusError = value;
     }
 

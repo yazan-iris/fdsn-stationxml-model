@@ -2,22 +2,22 @@ package edu.iris.dmc.fdsn.station.model;
 
 public class ComplexNumber {
 
-	private Double real;
-	private Double imaginary;
+	private double real;
+	private double imaginary;
 
-	public Double getReal() {
+	public double getReal() {
 		return real;
 	}
 
-	public void setReal(Double real) {
+	public void setReal(double real) {
 		this.real = real;
 	}
 
-	public Double getImaginary() {
+	public double getImaginary() {
 		return imaginary;
 	}
 
-	public void setImaginary(Double imaginary) {
+	public void setImaginary(double imaginary) {
 		this.imaginary = imaginary;
 	}
 
