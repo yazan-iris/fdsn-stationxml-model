@@ -4,7 +4,7 @@
 
 	<groupId>edu.iris.dmc</groupId>
 	<artifactId>fdsn-stationxml-model</artifactId>
-	<version>1.4.6</version>
+	<version>1.4.7</version>
 	<packaging>jar</packaging>
 
 	<name>fdsn station xml model</name>
@@ -46,8 +46,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.0.2</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
