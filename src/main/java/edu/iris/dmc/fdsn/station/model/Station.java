@@ -8,6 +8,7 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigInteger;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,8 +21,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import javax.xml.datatype.XMLGregorianCalendar;
-
 
 /**
  * This type represents a Station epoch. It is common to only have a single
@@ -89,13 +88,6 @@ public class Station extends BaseNodeType {
 	@XmlAttribute(name = "historicalCode")
 	protected String historicalCode;
 
-	@XmlAttribute(name = "startDate", required = true)
-	// @XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar startDate;
-	@XmlAttribute(name = "endDate")
-	// @XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar endDate;
-
 	@XmlElement(name = "Description")
 	protected String description;
 	@XmlElement(name = "Comment")
@@ -119,12 +111,11 @@ public class Station extends BaseNodeType {
 	@XmlElement(name = "Operator")
 	protected List<Operator> operator;
 	@XmlElement(name = "CreationDate", required = true)
-	// @XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar creationDate;
+	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	protected ZonedDateTime creationDate;
 	@XmlElement(name = "TerminationDate")
-	// @XmlSchemaType(name = "dateTime")
-
-	protected XMLGregorianCalendar terminationDate;
+	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	protected ZonedDateTime terminationDate;
 	@XmlElement(name = "TotalNumberChannels")
 	protected BigInteger totalNumberChannels;
 	@XmlElement(name = "SelectedNumberChannels")
@@ -206,22 +197,6 @@ public class Station extends BaseNodeType {
 		this.historicalCode = value;
 	}
 
-	public XMLGregorianCalendar getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(XMLGregorianCalendar startDate) {
-		this.startDate = startDate;
-	}
-
-	public XMLGregorianCalendar getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(XMLGregorianCalendar endDate) {
-		this.endDate = endDate;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -241,10 +216,10 @@ public class Station extends BaseNodeType {
 	 * Gets the value of the comment property.
 	 * 
 	 * <p>
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the comment property.
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the comment property.
 	 * 
 	 * <p>
 	 * For example, to add a new item, do as follows:
@@ -275,8 +250,8 @@ public class Station extends BaseNodeType {
 	}
 
 	/*
-	 * public void afterUnmarshal(Unmarshaller u, Object parent) { this.network
-	 * = (Network) parent; }
+	 * public void afterUnmarshal(Unmarshaller u, Object parent) { this.network =
+	 * (Network) parent; }
 	 */
 
 	public void addChannel(Channel channel) {
@@ -440,10 +415,10 @@ public class Station extends BaseNodeType {
 	 * Gets the value of the equipment property.
 	 * 
 	 * <p>
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the equipment property.
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the equipment property.
 	 * 
 	 * <p>
 	 * For example, to add a new item, do as follows:
@@ -454,8 +429,7 @@ public class Station extends BaseNodeType {
 	 * 
 	 * 
 	 * <p>
-	 * Objects of the following type(s) are allowed in the list {@link Equipment
-	 * }
+	 * Objects of the following type(s) are allowed in the list {@link Equipment }
 	 * 
 	 * 
 	 */
@@ -470,10 +444,10 @@ public class Station extends BaseNodeType {
 	 * Gets the value of the operator property.
 	 * 
 	 * <p>
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the operator property.
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the operator property.
 	 * 
 	 * <p>
 	 * For example, to add a new item, do as follows:
@@ -502,7 +476,7 @@ public class Station extends BaseNodeType {
 	 * @return possible object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public XMLGregorianCalendar getCreationDate() {
+	public ZonedDateTime getCreationDate() {
 		return creationDate;
 	}
 
@@ -513,7 +487,7 @@ public class Station extends BaseNodeType {
 	 *            allowed object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public void setCreationDate(XMLGregorianCalendar value) {
+	public void setCreationDate(ZonedDateTime value) {
 		this.creationDate = value;
 	}
 
@@ -523,7 +497,7 @@ public class Station extends BaseNodeType {
 	 * @return possible object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public XMLGregorianCalendar getTerminationDate() {
+	public ZonedDateTime getTerminationDate() {
 		return terminationDate;
 	}
 
@@ -534,7 +508,7 @@ public class Station extends BaseNodeType {
 	 *            allowed object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public void setTerminationDate(XMLGregorianCalendar value) {
+	public void setTerminationDate(ZonedDateTime value) {
 		this.terminationDate = value;
 	}
 
@@ -584,10 +558,10 @@ public class Station extends BaseNodeType {
 	 * Gets the value of the externalReference property.
 	 * 
 	 * <p>
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the externalReference property.
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the externalReference property.
 	 * 
 	 * <p>
 	 * For example, to add a new item, do as follows:
@@ -614,10 +588,10 @@ public class Station extends BaseNodeType {
 	 * Gets the value of the channel property.
 	 * 
 	 * <p>
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the channel property.
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the channel property.
 	 * 
 	 * <p>
 	 * For example, to add a new item, do as follows:
@@ -637,10 +611,10 @@ public class Station extends BaseNodeType {
 	}
 
 	/*
-	 * public Channel getChannel(String code, String location) { if
-	 * (this.channels == null) { return null; } for (Channel c : this.channels)
-	 * { if (c.getCode().equals(code) && c.getLocationCode().equals(location)) {
-	 * return c; } } return null; }
+	 * public Channel getChannel(String code, String location) { if (this.channels
+	 * == null) { return null; } for (Channel c : this.channels) { if
+	 * (c.getCode().equals(code) && c.getLocationCode().equals(location)) { return
+	 * c; } } return null; }
 	 */
 
 	@Override

@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -99,10 +98,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class Channel extends BaseNodeType {
 
 
-	@XmlAttribute(name = "startDate", required = true)
-	protected XMLGregorianCalendar startDate;
-	@XmlAttribute(name = "endDate")
-	protected XMLGregorianCalendar endDate;
+	
 
 	@XmlElement(name = "Description")
 	protected String description;
@@ -226,22 +222,6 @@ public class Channel extends BaseNodeType {
 			externalReference = new ArrayList<ExternalReferenceType>();
 		}
 		return this.externalReference;
-	}
-
-	public XMLGregorianCalendar getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(XMLGregorianCalendar startDate) {
-		this.startDate = startDate;
-	}
-
-	public XMLGregorianCalendar getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(XMLGregorianCalendar endDate) {
-		this.endDate = endDate;
 	}
 
 	public String getDescription() {

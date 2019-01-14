@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -72,12 +73,6 @@ public class Network extends BaseNodeType implements Serializable {
 	protected String alternateCode;
 	@XmlAttribute(name = "historicalCode")
 	protected String historicalCode;
-
-	@XmlAttribute(name = "startDate", required = true)
-	// @XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar startDate;
-	@XmlAttribute(name = "endDate")
-	protected XMLGregorianCalendar endDate;
 
 	@XmlElement(name = "Description")
 	protected String description;
@@ -160,22 +155,6 @@ public class Network extends BaseNodeType implements Serializable {
 	 */
 	public void setHistoricalCode(String value) {
 		this.historicalCode = value;
-	}
-
-	public XMLGregorianCalendar getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(XMLGregorianCalendar startDate) {
-		this.startDate = startDate;
-	}
-
-	public XMLGregorianCalendar getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(XMLGregorianCalendar endDate) {
-		this.endDate = endDate;
 	}
 
 	public String getDescription() {

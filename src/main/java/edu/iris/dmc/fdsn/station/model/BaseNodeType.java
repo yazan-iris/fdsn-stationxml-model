@@ -7,6 +7,7 @@
 
 package edu.iris.dmc.fdsn.station.model;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +22,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 
 import org.w3c.dom.Element;
-
 
 /**
  * A base node type for derivation from: Network, Station and Channel types.
@@ -62,25 +64,42 @@ import org.w3c.dom.Element;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BaseNodeType", propOrder = { "dataAvailability", "any" })
 @XmlSeeAlso({ Station.class, Network.class, Channel.class })
-public abstract class BaseNodeType implements NodeType{
+public abstract class BaseNodeType implements NodeType {
 
-	
-	
-	
+	@XmlAttribute(name = "startDate", required = true)
+	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	protected ZonedDateTime startDate;
+	@XmlAttribute(name = "endDate")
+	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	protected ZonedDateTime endDate;
+
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
-	
 
 	@XmlAttribute(name = "restrictedStatus")
 	protected RestrictedStatusType restrictedStatus;
-	
+
 	@XmlAnyAttribute
 	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
 	@XmlElement(name = "DataAvailability")
 	protected DataAvailability dataAvailability;
-	
 
+	public ZonedDateTime getStartDate() {
+		return this.startDate;
+	}
+
+	public void setStartDate(ZonedDateTime startDate) {
+		this.startDate = startDate;
+	}
+
+	public ZonedDateTime getEndDate() {
+		return this.endDate;
+	}
+
+	public void setEndDate(ZonedDateTime endDate) {
+		this.endDate = endDate;
+	}
 
 	/**
 	 * Gets the value of the dataAvailability property.
@@ -109,16 +128,15 @@ public abstract class BaseNodeType implements NodeType{
 	 * @return possible object is {@link String }
 	 * 
 	 */
-	
 
 	/**
 	 * Gets the value of the any property.
 	 * 
 	 * <p>
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the any property.
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the any property.
 	 * 
 	 * <p>
 	 * For example, to add a new item, do as follows:
@@ -141,9 +159,6 @@ public abstract class BaseNodeType implements NodeType{
 		return this.any;
 	}
 
-	
-
-	
 	/**
 	 * Gets the value of the restrictedStatus property.
 	 * 
@@ -171,11 +186,10 @@ public abstract class BaseNodeType implements NodeType{
 	 * @return possible object is {@link String }
 	 * 
 	 */
-	
 
 	/**
-	 * Gets a map that contains attributes that aren't bound to any typed
-	 * property on this class.
+	 * Gets a map that contains attributes that aren't bound to any typed property
+	 * on this class.
 	 * 
 	 * <p>
 	 * the map is keyed by the name of the attribute and the value is the string
@@ -191,46 +205,44 @@ public abstract class BaseNodeType implements NodeType{
 		return otherAttributes;
 	}
 
+	public enum LEVEL {
 
-public enum LEVEL {
+		NETWORK("network", 1), STATION("station", 2), CHANNEL("channel", 3), RESPONSE("response", 4);
 
-	NETWORK("network", 1), STATION("station", 2), CHANNEL("channel", 3), RESPONSE("response", 4);
+		private int value;
+		private String name;
 
-	private int value;
-	private String name;
+		private LEVEL(int value) {
+			this(null, value);
+		}
 
-	private LEVEL(int value) {
-		this(null, value);
-	}
+		private LEVEL(String name, int value) {
+			this.value = value;
+			this.name = name;
+		}
 
-	private LEVEL(String name, int value) {
-		this.value = value;
-		this.name = name;
-	}
+		public int getValue() {
+			return this.value;
+		}
 
-	public int getValue() {
-		return this.value;
-	}
-
-	public static LEVEL parse(String value) {
-		if (value == null) {
+		public static LEVEL parse(String value) {
+			if (value == null) {
+				throw new IllegalArgumentException();
+			}
+			if ("network".equalsIgnoreCase(value) || "net".equalsIgnoreCase(value)) {
+				return NETWORK;
+			}
+			if ("station".equalsIgnoreCase(value) || "sta".equalsIgnoreCase(value)) {
+				return STATION;
+			}
+			if ("channel".equalsIgnoreCase(value) || "cha".equalsIgnoreCase(value)) {
+				return CHANNEL;
+			}
+			if ("response".equalsIgnoreCase(value) || "resp".equalsIgnoreCase(value)) {
+				return RESPONSE;
+			}
 			throw new IllegalArgumentException();
 		}
-		if ("network".equalsIgnoreCase(value) || "net".equalsIgnoreCase(value)) {
-			return NETWORK;
-		}
-		if ("station".equalsIgnoreCase(value) || "sta".equalsIgnoreCase(value)) {
-			return STATION;
-		}
-		if ("channel".equalsIgnoreCase(value) || "cha".equalsIgnoreCase(value)) {
-			return CHANNEL;
-		}
-		if ("response".equalsIgnoreCase(value) || "resp".equalsIgnoreCase(value)) {
-			return RESPONSE;
-		}
-		throw new IllegalArgumentException();
 	}
-}
-
 
 }

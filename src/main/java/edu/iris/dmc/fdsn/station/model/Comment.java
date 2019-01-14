@@ -9,6 +9,7 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigInteger;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,12 +61,11 @@ public class Comment {
     @XmlElement(name = "Value", required = true)
     protected String value;
     @XmlElement(name = "BeginEffectiveTime")
-    //@XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar beginEffectiveTime;
+    @XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+    protected ZonedDateTime beginEffectiveTime;
     @XmlElement(name = "EndEffectiveTime")
-   // @XmlSchemaType(name = "dateTime")
-
-    protected XMLGregorianCalendar endEffectiveTime;
+    @XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+    protected ZonedDateTime endEffectiveTime;
     @XmlElement(name = "Author")
     protected List<PersonType> author;
     @XmlAttribute(name = "id")
@@ -103,7 +103,7 @@ public class Comment {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getBeginEffectiveTime() {
+    public ZonedDateTime getBeginEffectiveTime() {
         return beginEffectiveTime;
     }
     
@@ -116,7 +116,7 @@ public class Comment {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setBeginEffectiveTime(XMLGregorianCalendar value) {
+    public void setBeginEffectiveTime(ZonedDateTime value) {
         this.beginEffectiveTime = value;
     }
 
@@ -128,7 +128,7 @@ public class Comment {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getEndEffectiveTime() {
+    public ZonedDateTime getEndEffectiveTime() {
         return endEffectiveTime;
     }
 
@@ -141,7 +141,7 @@ public class Comment {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setEndEffectiveTime(XMLGregorianCalendar value) {
+    public void setEndEffectiveTime(ZonedDateTime value) {
         this.endEffectiveTime = value;
     }
 
