@@ -8,6 +8,7 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -111,10 +112,10 @@ public class Station extends BaseNodeType {
 	@XmlElement(name = "Operator")
 	protected List<Operator> operator;
 	@XmlElement(name = "CreationDate", required = true)
-	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 	protected ZonedDateTime creationDate;
 	@XmlElement(name = "TerminationDate")
-	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 	protected ZonedDateTime terminationDate;
 	@XmlElement(name = "TotalNumberChannels")
 	protected BigInteger totalNumberChannels;

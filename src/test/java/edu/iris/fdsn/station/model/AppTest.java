@@ -3,6 +3,7 @@ package edu.iris.fdsn.station.model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.bind.JAXBContext;
@@ -20,41 +21,43 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest extends TestCase {
+	/**
+	 * Create the test case
+	 *
+	 * @param testName
+	 *            name of the test case
+	 */
+	public AppTest(String testName) {
+		super(testName);
+	}
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+	/**
+	 * @return the suite of tests being tested
+	 */
+	public static Test suite() {
+		return new TestSuite(AppTest.class);
+	}
 
-    /**
-     * Rigourous Test :-)
-     * @throws JAXBException 
-     */
-    public void testApp() throws JAXBException
-    {
-       
-        
-    }
-    
-    public void testApp2() throws JAXBException, FileNotFoundException
-    {
-     
-        
-        
-    }
+	/**
+	 * Rigourous Test :-)
+	 * 
+	 * @throws JAXBException
+	 */
+	public void testApp() throws JAXBException {
+
+	}
+
+	public void testApp2() throws JAXBException, FileNotFoundException {
+
+		try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("iu.xml");) {
+			JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.dmc.fdsn.station.model.ObjectFactory.class);
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			FDSNStationXML doc = (FDSNStationXML) jaxbUnmarshaller.unmarshal(inputStream);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }

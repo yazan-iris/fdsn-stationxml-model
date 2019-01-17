@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<FDSNStationXML xmlns="http://www.fdsn.org/xml/station/1" schemaVersion="1.0" xsi:schemaLocation="http://www.fdsn.org/xml/station/1 http://www.fdsn.org/xml/station/fdsn-station-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:iris="http://www.fdsn.org/xml/station/1/iris">
+ <Source>IRIS-DMC</Source>
+ <Sender>IRIS-DMC</Sender>
+ <Module>IRIS WEB SERVICE: fdsnws-station | version: 1.1.36</Module>
+ <ModuleURI>http://service.iris.edu/fdsnws/station/1/query?net=IU&amp;sta=ANMO&amp;channel=BHZ&amp;loc=--&amp;level=cha</ModuleURI>
+ <Created>2019-01-15T22:26:16</Created>
+ <Network code="IU" startDate="1988-01-01T00:00:00" endDate="2500-12-31T23:59:59" restrictedStatus="open">
+  <Description>Global Seismograph Network (GSN - IRIS/USGS)</Description>
+  <TotalNumberStations>269</TotalNumberStations>
+  <SelectedNumberStations>2</SelectedNumberStations>
+  <Station code="ANMO" startDate="1989-08-29T00:00:00" endDate="1995-07-14T00:00:00" restrictedStatus="open" iris:alternateNetworkCodes="_FDSN,_GSN-BROADBAND,.CEUSN-CONTRIB,_FDSN-ALL,.UNRESTRICTED,_GSN">
+   <Comment>
+    <Value>Time may be 1 minute slow.</Value>
+    <BeginEffectiveTime>1991-01-31T00:00:00</BeginEffectiveTime>
+    <EndEffectiveTime>1991-02-16T00:00:00</EndEffectiveTime>
+   </Comment>
+   <Comment>
+    <Value>Time correction does not include leap second.</Value>
+    <BeginEffectiveTime>1992-06-30T00:00:00</BeginEffectiveTime>
+    <EndEffectiveTime>1993-03-22T18:50:00</EndEffectiveTime>
+   </Comment>
+   <Comment>
+    <Value>TEST DATA:  Calibration, and testing in progress.</Value>
+    <BeginEffectiveTime>1993-02-08T23:00:00</BeginEffectiveTime>
+    <EndEffectiveTime>1993-02-09T17:50:00</EndEffectiveTime>
+   </Comment>
+   <Latitude>34.9459</Latitude>
+   <Longitude>-106.4572</Longitude>
+   <Elevation>1850.0</Elevation>
+   <Site>
+    <Name>Albuquerque, New Mexico, USA</Name>
+   </Site>
+   <CreationDate>1989-08-29T00:00:00</CreationDate>
+   <TotalNumberChannels>121</TotalNumberChannels>
+   <SelectedNumberChannels>5</SelectedNumberChannels>
+   <Channel code="BHZ" endDate="1991-01-23T22:25:00" locationCode="" restrictedStatus="open" startDate="1989-08-29T00:00:00">
+    <Latitude>34.9459</Latitude>
+    <Longitude>-106.457199</Longitude>
+    <Elevation>1750</Elevation>
+    <Depth>100</Depth>
+    <Azimuth>0</Azimuth>
+    <Dip>-90</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>2E01</SampleRate>
+    <ClockDrift>0E00</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Geotech KS-36000-I Borehole Seismometer</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.007E9</Value>
+      <Frequency>2E-2</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+    </Response>
+   </Channel>
+   <Channel code="BHZ" endDate="1991-02-11T20:48:00" locationCode="" restrictedStatus="open" startDate="1991-01-23T22:25:00">
+    <Latitude>34.9459</Latitude>
+    <Longitude>-106.457199</Longitude>
+    <Elevation>1750</Elevation>
+    <Depth>100</Depth>
+    <Azimuth>0</Azimuth>
+    <Dip>90</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>2E01</SampleRate>
+    <ClockDrift>0E00</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Geotech KS-36000-I Borehole Seismometer</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.007E9</Value>
+      <Frequency>2E-2</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+    </Response>
+   </Channel>
+   <Channel code="BHZ" endDate="1995-02-01T00:00:00" locationCode="" restrictedStatus="open" startDate="1991-02-11T20:48:00">
+    <Latitude>34.9459</Latitude>
+    <Longitude>-106.457199</Longitude>
+    <Elevation>1750</Elevation>
+    <Depth>100</Depth>
+    <Azimuth>0</Azimuth>
+    <Dip>-90</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>2E01</SampleRate>
+    <ClockDrift>0E00</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Geotech KS-36000-I Borehole Seismometer</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.007E9</Value>
+      <Frequency>2E-2</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+    </Response>
+   </Channel>
+   <Channel code="BHZ" endDate="1995-03-21T17:16:00" locationCode="" restrictedStatus="open" startDate="1995-02-01T00:00:00">
+    <Latitude>34.9459</Latitude>
+    <Longitude>-106.457199</Longitude>
+    <Elevation>1750</Elevation>
+    <Depth>100</Depth>
+    <Azimuth>0</Azimuth>
+    <Dip>-90</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>2E01</SampleRate>
+    <ClockDrift>0E00</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Geotech KS-36000-I Borehole Seismometer</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>1.007E9</Value>
+      <Frequency>2E-2</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+    </Response>
+   </Channel>
+   <Channel code="BHZ" endDate="1995-07-14T00:00:00" locationCode="" restrictedStatus="open" startDate="1995-03-21T17:16:00">
+    <Comment>
+     <Value>Channel is down.</Value>
+     <BeginEffectiveTime>1995-03-27T15:00:00</BeginEffectiveTime>
+     <EndEffectiveTime>1995-03-28T17:00:00</EndEffectiveTime>
+    </Comment>
+    <Comment>
+     <Value>Channel is down.</Value>
+     <BeginEffectiveTime>1995-05-17T16:14:00</BeginEffectiveTime>
+     <EndEffectiveTime>1995-05-18T16:14:00</EndEffectiveTime>
+    </Comment>
+    <Latitude>34.9459</Latitude>
+    <Longitude>-106.457199</Longitude>
+    <Elevation>1750</Elevation>
+    <Depth>100</Depth>
+    <Azimuth>0</Azimuth>
+    <Dip>-90</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>2E01</SampleRate>
+    <ClockDrift>0E00</ClockDrift>
+    <CalibrationUnits>
+     <Name>A</Name>
+     <Description>Amperes</Description>
+    </CalibrationUnits>
+    <Sensor>
+     <Description>Geotech KS-54000 Borehole Seismometer</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>8.6473E8</Value>
+      <Frequency>2E-2</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+    </Response>
+   </Channel>
+  </Station>
+  <Station code="ANMO" startDate="1995-07-14T00:00:00" endDate="2000-10-19T16:00:00" restrictedStatus="open" iris:alternateNetworkCodes="_FDSN,_GSN-BROADBAND,.CEUSN-CONTRIB,_FDSN-ALL,.UNRESTRICTED,_GSN,.TEST">
+   <Comment>
+    <Value>Time Uncertain.</Value>
+    <BeginEffectiveTime>1996-05-20T19:20:00</BeginEffectiveTime>
+    <EndEffectiveTime>1996-05-24T14:13:00</EndEffectiveTime>
+   </Comment>
+   <Latitude>34.9459</Latitude>
+   <Longitude>-106.4572</Longitude>
+   <Elevation>1850.0</Elevation>
+   <Site>
+    <Name>Albuquerque, New Mexico, USA</Name>
+   </Site>
+   <CreationDate>1989-08-29T00:00:00</CreationDate>
+   <TotalNumberChannels>172</TotalNumberChannels>
+   <SelectedNumberChannels>1</SelectedNumberChannels>
+   <Channel code="BHZ" endDate="1998-10-26T20:00:00" locationCode="" restrictedStatus="open" startDate="1995-07-14T00:00:00">
+    <Comment>
+     <Value>Channel has high frequency cultural background noise.</Value>
+     <BeginEffectiveTime>1995-07-14T00:00:00</BeginEffectiveTime>
+     <EndEffectiveTime>2599-12-31T23:59:59</EndEffectiveTime>
+    </Comment>
+    <Comment>
+     <Value>Channel has high frequency cultural background noise.</Value>
+     <BeginEffectiveTime>1995-07-14T00:00:00</BeginEffectiveTime>
+     <EndEffectiveTime>2000-10-19T16:00:00</EndEffectiveTime>
+    </Comment>
+    <Comment>
+     <Value>Seismometer mass is against stops.</Value>
+     <BeginEffectiveTime>1995-12-01T15:15:00</BeginEffectiveTime>
+     <EndEffectiveTime>1996-02-09T17:33:00</EndEffectiveTime>
+    </Comment>
+    <Comment>
+     <Value>Seismometer mass is against stops.</Value>
+     <BeginEffectiveTime>1995-12-24T03:15:00</BeginEffectiveTime>
+     <EndEffectiveTime>1996-02-09T17:33:00</EndEffectiveTime>
+    </Comment>
+    <Comment>
+     <Value>Seismometer mass is against stops.</Value>
+     <BeginEffectiveTime>1996-02-04T11:35:00</BeginEffectiveTime>
+     <EndEffectiveTime>1996-02-09T17:33:00</EndEffectiveTime>
+    </Comment>
+    <Latitude>34.9459</Latitude>
+    <Longitude>-106.457199</Longitude>
+    <Elevation>1700</Elevation>
+    <Depth>150</Depth>
+    <Azimuth>0</Azimuth>
+    <Dip>-90</Dip>
+    <Type>CONTINUOUS</Type>
+    <Type>GEOPHYSICAL</Type>
+    <SampleRate>2E01</SampleRate>
+    <ClockDrift>0E00</ClockDrift>
+    <Sensor>
+     <Description>Geotech KS-54000 Borehole Seismometer</Description>
+    </Sensor>
+    <Response>
+     <InstrumentSensitivity>
+      <Value>8.6473E8</Value>
+      <Frequency>2E-2</Frequency>
+      <InputUnits>
+       <Name>M/S</Name>
+       <Description>Velocity in Meters Per Second</Description>
+      </InputUnits>
+      <OutputUnits>
+       <Name>COUNTS</Name>
+       <Description>Digital Counts</Description>
+      </OutputUnits>
+     </InstrumentSensitivity>
+    </Response>
+   </Channel>
+  </Station>
+ </Network>
+</FDSNStationXML>

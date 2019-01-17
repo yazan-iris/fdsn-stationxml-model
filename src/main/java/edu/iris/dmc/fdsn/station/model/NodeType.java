@@ -1,6 +1,7 @@
 package edu.iris.dmc.fdsn.station.model;
 
 
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 
 public interface NodeType {

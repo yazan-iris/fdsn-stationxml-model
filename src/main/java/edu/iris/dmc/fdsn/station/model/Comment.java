@@ -9,6 +9,7 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,10 +62,10 @@ public class Comment {
     @XmlElement(name = "Value", required = true)
     protected String value;
     @XmlElement(name = "BeginEffectiveTime")
-    @XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+    @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
     protected ZonedDateTime beginEffectiveTime;
     @XmlElement(name = "EndEffectiveTime")
-    @XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+    @XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
     protected ZonedDateTime endEffectiveTime;
     @XmlElement(name = "Author")
     protected List<PersonType> author;

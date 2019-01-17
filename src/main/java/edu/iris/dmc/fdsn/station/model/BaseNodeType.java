@@ -7,6 +7,7 @@
 
 package edu.iris.dmc.fdsn.station.model;
 
+import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,10 +68,10 @@ import org.w3c.dom.Element;
 public abstract class BaseNodeType implements NodeType {
 
 	@XmlAttribute(name = "startDate", required = true)
-	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 	protected ZonedDateTime startDate;
 	@XmlAttribute(name = "endDate")
-	@XmlJavaTypeAdapter(ZonedDateXmlAdapter.class)
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 	protected ZonedDateTime endDate;
 
 	@XmlAnyElement(lax = true)
