@@ -7,6 +7,7 @@
 
 package edu.iris.dmc.fdsn.station.model;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -81,16 +82,16 @@ public class Equipment {
 	protected String serialNumber;
 	@XmlElement(name = "InstallationDate")
 	// @XmlSchemaType(name = "dateTime")
-	@XmlJavaTypeAdapter(DateAdapter.class)
-	protected Date installationDate;
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
+	protected ZonedDateTime installationDate;
 	@XmlElement(name = "RemovalDate")
 	// @XmlSchemaType(name = "dateTime")
-	@XmlJavaTypeAdapter(DateAdapter.class)
-	protected Date removalDate;
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
+	protected ZonedDateTime removalDate;
 	@XmlElement(name = "CalibrationDate")
 	// @XmlSchemaType(name = "dateTime")
-	@XmlJavaTypeAdapter(DateAdapter.class)
-	protected List<Date> calibrationDate;
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
+	protected List<ZonedDateTime> calibrationDate;
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
 	@XmlAttribute(name = "resourceId")
@@ -241,7 +242,7 @@ public class Equipment {
 	 * @return possible object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public Date getInstallationDate() {
+	public ZonedDateTime getInstallationDate() {
 		return installationDate;
 	}
 
@@ -252,7 +253,7 @@ public class Equipment {
 	 *            allowed object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public void setInstallationDate(Date value) {
+	public void setInstallationDate(ZonedDateTime value) {
 		this.installationDate = value;
 	}
 
@@ -262,7 +263,7 @@ public class Equipment {
 	 * @return possible object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public Date getRemovalDate() {
+	public ZonedDateTime getRemovalDate() {
 		return removalDate;
 	}
 
@@ -273,7 +274,7 @@ public class Equipment {
 	 *            allowed object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public void setRemovalDate(Date value) {
+	public void setRemovalDate(ZonedDateTime value) {
 		this.removalDate = value;
 	}
 
@@ -300,9 +301,9 @@ public class Equipment {
 	 * 
 	 * 
 	 */
-	public List<Date> getCalibrationDate() {
+	public List<ZonedDateTime> getCalibrationDate() {
 		if (calibrationDate == null) {
-			calibrationDate = new ArrayList<Date>();
+			calibrationDate = new ArrayList<ZonedDateTime>();
 		}
 		return this.calibrationDate;
 	}
