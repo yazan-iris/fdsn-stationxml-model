@@ -29,6 +29,11 @@
 			<organization>Incorporated Research Institutions for Seismology</organization>
 			<organizationUrl>http://www.iris.edu/hq/</organizationUrl>
 		</developer>
+		<developer>
+		  <name>Tim Ronan</name>
+		  <organization>Incorporated Research Institutions for Seismology</organization>
+		  <organizationUrl>http://www.iris.edu/hq/</organizationUrl>
+		</developer>
 	</developers>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -147,7 +152,7 @@
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<url>https://oss.sonatype.org/content/repositories/releases</url>
 		</repository>
 	</distributionManagement>
 </project>
