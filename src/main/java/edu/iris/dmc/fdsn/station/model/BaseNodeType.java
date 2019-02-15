@@ -205,6 +205,10 @@ public abstract class BaseNodeType implements NodeType {
 	public Map<QName, String> getOtherAttributes() {
 		return otherAttributes;
 	}
+	
+	public void addAttribute(QName qName,String value) {
+		this.otherAttributes.put(qName, value);
+	}
 
 	public enum LEVEL {
 

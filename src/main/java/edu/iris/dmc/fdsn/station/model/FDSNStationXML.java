@@ -8,6 +8,7 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
@@ -78,8 +80,8 @@ public class FDSNStationXML {
 	@XmlSchemaType(name = "anyURI")
 	protected String moduleURI;
 	@XmlElement(name = "Created", required = true)
-	@XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar created;
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
+	protected ZonedDateTime created;
 
 	@XmlElement(name = "Network", required = true)
 	protected List<Network> network;
@@ -180,7 +182,7 @@ public class FDSNStationXML {
 	 * @return possible object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public XMLGregorianCalendar getCreated() {
+	public ZonedDateTime getCreated() {
 		return created;
 	}
 
@@ -191,7 +193,7 @@ public class FDSNStationXML {
 	 *            allowed object is {@link XMLGregorianCalendar }
 	 * 
 	 */
-	public void setCreated(XMLGregorianCalendar value) {
+	public void setCreated(ZonedDateTime value) {
 		this.created = value;
 	}
 

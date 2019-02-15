@@ -125,7 +125,7 @@ public class Station extends BaseNodeType {
 	protected List<ExternalReferenceType> externalReference;
 
 	@XmlElement(name = "Channel")
-	protected List<Channel> channels;
+	protected List<Channel> channels=new ArrayList<>();
 
 	@XmlTransient
 	private Network network;
