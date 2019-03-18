@@ -31,7 +31,6 @@ public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
 
 		try {
 			TemporalAccessor result = dtf.parseBest(stringValue, ZonedDateTime::from, LocalDateTime::from);
-			System.out.println(result);
 			offsetDateTime = ZonedDateTime.from(result);
 		} catch (DateTimeParseException e) {
 			e.printStackTrace();
