@@ -6,6 +6,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAccessor;
 
@@ -14,16 +15,15 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
 
 	private final DateTimeFormatter dtf = new DateTimeFormatterBuilder()
-			.appendPattern("yyyy-MM-dd['T'HH:mm:ss[.SSS[SSS]]['Z']]").parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+			.appendPattern("yyyy-MM-dd['T'HH:mm:ss[.SSSSSSSSS][.SSSSSS][.SSS]['Z']]").parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
 			.parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0).parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
-			.toFormatter().withZone(ZoneId.of("UTC"));
+			.toFormatter().withZone(ZoneId.of("UTC")).withResolverStyle(ResolverStyle .LENIENT);;
 
 	@Override
 	public ZonedDateTime unmarshal(String stringValue) throws Exception {
 		if (stringValue == null) {
 			return null;
 		}
-
 		if ("".equals(stringValue.trim())) {
 			return null;
 		}
@@ -42,7 +42,7 @@ public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
 
 	@Override
 	public String marshal(ZonedDateTime value) throws Exception {
-		return value != null ? dtf.format(value) : null;
+		return value != null ? value.format(DateTimeFormatter.ISO_INSTANT) : null;
 	}
 
 }

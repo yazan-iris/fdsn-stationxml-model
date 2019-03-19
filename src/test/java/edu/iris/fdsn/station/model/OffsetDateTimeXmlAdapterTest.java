@@ -32,8 +32,12 @@ public class OffsetDateTimeXmlAdapterTest {
 
 		assertEquals(offsetDateTime, other);
 		
-		ZonedDateTime time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000000Z");
+		ZonedDateTime time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T10:36:11.176973Z");
 		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000Z");
+		
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000000Z");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.176973Z");
+		
 
 	}
 
