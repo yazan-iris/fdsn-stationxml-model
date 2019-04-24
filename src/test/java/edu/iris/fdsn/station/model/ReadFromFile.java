@@ -1,5 +1,6 @@
 package edu.iris.fdsn.station.model;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,10 +18,12 @@ public class ReadFromFile {
 	@Test
 	public void testApp2() throws JAXBException, FileNotFoundException {
 
-		try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("iu.xml");) {
+		try (InputStream inputStream = new FileInputStream("/Users/Suleiman/C1_LL07.XML");) {
 			JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.dmc.fdsn.station.model.ObjectFactory.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			FDSNStationXML doc = (FDSNStationXML) jaxbUnmarshaller.unmarshal(inputStream);
+			
+			System.out.println(doc.getNetwork().get(0).getStartDate()+"      "+doc.getNetwork().get(0).getEndDate());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AngleType")
 public class AngleType
-    extends Float
+    extends FloatNoUnitType
 {
 
 

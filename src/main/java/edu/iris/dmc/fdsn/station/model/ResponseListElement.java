@@ -46,7 +46,7 @@ public class ResponseListElement {
     @XmlElement(name = "Frequency", required = true)
     protected Frequency frequency;
     @XmlElement(name = "Amplitude", required = true)
-    protected Float amplitude;
+    protected FloatNoUnitType amplitude;
     @XmlElement(name = "Phase", required = true)
     protected AngleType phase;
 
@@ -82,7 +82,7 @@ public class ResponseListElement {
      *     {@link Float }
      *     
      */
-    public Float getAmplitude() {
+    public FloatNoUnitType getAmplitude() {
         return amplitude;
     }
 
@@ -94,7 +94,7 @@ public class ResponseListElement {
      *     {@link Float }
      *     
      */
-    public void setAmplitude(Float value) {
+    public void setAmplitude(FloatNoUnitType value) {
         this.amplitude = value;
     }
 

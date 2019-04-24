@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FrequencyType")
 public class Frequency
-    extends Float
+    extends FloatNoUnitType
 {
 
 
