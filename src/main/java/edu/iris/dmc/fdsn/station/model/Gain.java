@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GainType", propOrder = { "value", "frequency" })
 @XmlSeeAlso({ Sensitivity.class })
-public class Gain {
+public class Gain implements ResponseType{
 
 	@XmlElement(name = "Value")
 	protected double value;
@@ -55,13 +55,13 @@ public class Gain {
 	protected double frequency;
 
 	@XmlTransient
-	private Long id;
+	private long id;
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -95,6 +95,18 @@ public class Gain {
 	 */
 	public void setFrequency(double value) {
 		this.frequency = value;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

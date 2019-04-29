@@ -116,8 +116,8 @@ public class ResponseStage {
 		return null;
 	}
 
-	public List<Filter> getFilters() {
-		List<Filter> filters = new ArrayList<Filter>();
+	public List<ResponseType> getFilters() {
+		List<ResponseType> filters = new ArrayList<ResponseType>();
 		if (this.polesZeros != null) {
 			filters.add(this.polesZeros);
 		}
@@ -362,7 +362,7 @@ public class ResponseStage {
 		return otherAttributes;
 	}
 
-	public void add(Filter filter) {
+	public void add(ResponseType filter) {
 		if (filter == null) {
 			return;
 		}

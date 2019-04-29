@@ -67,7 +67,7 @@ import org.w3c.dom.Element;
     FIR.class,
     PolesZeros.class
 })
-public class BaseFilter implements Filter{
+public class BaseFilter implements ResponseType{
 
 	@XmlTransient
 	private Long id;
@@ -92,7 +92,7 @@ public class BaseFilter implements Filter{
     
     
     
-    public Long getId() {
+    public long getId() {
 		return id;
 	}
 

@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DecimationType", propOrder = { "inputSampleRate", "factor", "offset", "delay", "correction" })
-public class Decimation {
+public class Decimation implements ResponseType {
 
 	@XmlElement(name = "InputSampleRate", required = true)
 	protected Frequency inputSampleRate;
@@ -58,13 +58,13 @@ public class Decimation {
 	protected Float correction;
 
 	@XmlTransient
-	private Long id;
+	private long id;
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -81,8 +81,7 @@ public class Decimation {
 	/**
 	 * Sets the value of the inputSampleRate property.
 	 * 
-	 * @param value
-	 *            allowed object is {@link Frequency }
+	 * @param value allowed object is {@link Frequency }
 	 * 
 	 */
 	public void setInputSampleRate(Frequency value) {
@@ -102,8 +101,7 @@ public class Decimation {
 	/**
 	 * Sets the value of the factor property.
 	 * 
-	 * @param value
-	 *            allowed object is {@link BigInteger }
+	 * @param value allowed object is {@link BigInteger }
 	 * 
 	 */
 	public void setFactor(BigInteger value) {
@@ -123,8 +121,7 @@ public class Decimation {
 	/**
 	 * Sets the value of the offset property.
 	 * 
-	 * @param value
-	 *            allowed object is {@link BigInteger }
+	 * @param value allowed object is {@link BigInteger }
 	 * 
 	 */
 	public void setOffset(BigInteger value) {
@@ -144,8 +141,7 @@ public class Decimation {
 	/**
 	 * Sets the value of the delay property.
 	 * 
-	 * @param value
-	 *            allowed object is {@link Float }
+	 * @param value allowed object is {@link Float }
 	 * 
 	 */
 	public void setDelay(Float value) {
@@ -165,12 +161,23 @@ public class Decimation {
 	/**
 	 * Sets the value of the correction property.
 	 * 
-	 * @param value
-	 *            allowed object is {@link Float }
+	 * @param value allowed object is {@link Float }
 	 * 
 	 */
 	public void setCorrection(Float value) {
 		this.correction = value;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
