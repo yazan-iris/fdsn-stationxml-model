@@ -68,9 +68,6 @@ import org.w3c.dom.Element;
     PolesZeros.class
 })
 public class BaseFilter implements ResponseType{
-
-	@XmlTransient
-	private Long id;
 	
     @XmlElement(name = "Description")
     protected String description;
@@ -87,18 +84,9 @@ public class BaseFilter implements ResponseType{
     @XmlAttribute(name = "name")
     protected String name;
     @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+    private Map<QName, String> otherAttributes = new HashMap<>();
 
-    
-    
-    
-    public long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	/**
      * Gets the value of the description property.

@@ -54,17 +54,6 @@ public class Gain implements ResponseType{
 	@XmlElement(name = "Frequency")
 	protected double frequency;
 
-	@XmlTransient
-	private long id;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	/**
 	 * Gets the value of the value property.
 	 * 

@@ -57,17 +57,6 @@ public class Decimation implements ResponseType {
 	@XmlElement(name = "Correction", required = true)
 	protected Float correction;
 
-	@XmlTransient
-	private long id;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
 	/**
 	 * Gets the value of the inputSampleRate property.
 	 * 
