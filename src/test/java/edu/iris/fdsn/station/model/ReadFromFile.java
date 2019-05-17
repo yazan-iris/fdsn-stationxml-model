@@ -22,8 +22,9 @@ public class ReadFromFile {
 			JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.dmc.fdsn.station.model.ObjectFactory.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			FDSNStationXML doc = (FDSNStationXML) jaxbUnmarshaller.unmarshal(inputStream);
-			
-			System.out.println(doc.getNetwork().get(0).getStartDate()+"      "+doc.getNetwork().get(0).getEndDate());
+
+			System.out
+					.println(doc.getNetwork().get(0).getStartDate() + "      " + doc.getNetwork().get(0).getEndDate());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
