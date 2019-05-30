@@ -34,10 +34,31 @@ public class OffsetDateTimeXmlAdapterTest {
 		
 		ZonedDateTime time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T10:36:11.176973Z");
 		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000Z");
-		
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000+00");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000+00:00");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000+01");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000-12");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000-12:20");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000-18");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000+18");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000+17:59");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000-01");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000-00");
+		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000+02");
 		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000000Z");
 		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.176973Z");
-		
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.1");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.11");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.111");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.1111");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.11111");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.111111");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.1111111");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.11111111");
+		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.111111111");
+
 
 	}
 
