@@ -47,9 +47,9 @@ public class FloatNoUnitType {
     @XmlValue
     protected double value;
     @XmlAttribute(name = "plusError")
-    protected Double plusError;
+    protected double plusError;
     @XmlAttribute(name = "minusError")
-    protected Double minusError;
+    protected double minusError;
     @XmlAttribute(name = "measurementMethod")
     protected String measurementMethod;
 
@@ -77,7 +77,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public Double getPlusError() {
+    public double getPlusError() {
         return plusError;
     }
 
@@ -89,7 +89,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public void setPlusError(Double value) {
+    public void setPlusError(double value) {
         this.plusError = value;
     }
 
@@ -101,7 +101,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public Double getMinusError() {
+    public double getMinusError() {
         return minusError;
     }
 
@@ -113,7 +113,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public void setMinusError(Double value) {
+    public void setMinusError(double value) {
         this.minusError = value;
     }
 
