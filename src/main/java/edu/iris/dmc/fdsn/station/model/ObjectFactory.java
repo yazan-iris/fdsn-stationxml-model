@@ -183,13 +183,6 @@ public class ObjectFactory {
         return new Response();
     }
 
-    /**
-     * Create an instance of {@link BaseFilter }
-     * 
-     */
-    public BaseFilter createBaseFilterType() {
-        return new BaseFilter();
-    }
 
     /**
      * Create an instance of {@link Sensitivity }

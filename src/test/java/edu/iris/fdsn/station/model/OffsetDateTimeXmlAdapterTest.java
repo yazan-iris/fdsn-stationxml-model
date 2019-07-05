@@ -10,6 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAccessor;
+import java.util.Calendar;
+
+import javax.xml.bind.DatatypeConverter;
 
 import org.junit.Test;
 
@@ -31,43 +34,57 @@ public class OffsetDateTimeXmlAdapterTest {
 		ZonedDateTime other = offsetDateTimeXmlAdapter.unmarshal("1971-01-01T00:00:00");
 
 		assertEquals(offsetDateTime, other);
-		
+
 		ZonedDateTime time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T10:36:11.176973Z");
 		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000Z");
-		
+
 		time = offsetDateTimeXmlAdapter.unmarshal("2016-06-21T00:00:00.000000Z");
 		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.176973Z");
+
+		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04");
 		
+		
+		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04:00:00.1");
+		
+		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04:00:00.01");
+		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04:00:00.10");
+		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04:00:00.11");
+		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04:00:00.111111");
+		
+		//ZonedDateTime.parse("2019-03-01T04:00:00.1111", DateTimeFormatter.ISO_INSTANT);
+
+		Calendar cal = DatatypeConverter.parseDateTime("2019-03-01T04:00:00.1");
+		ZonedDateTime z = cal.toInstant().atZone(ZoneId.of("UTC"));
+
 
 	}
 
 	@Test
 	public void test3() throws Exception {
-		DateTimeFormatter dtf = new DateTimeFormatterBuilder()
-				.appendPattern("yyyy-MM-dd['T'HH:mm:ss[.SSS]['Z']]").parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
-				.parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0).parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
-				.toFormatter().withZone(ZoneId.of("UTC"));
-		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX][X]")
-				//.withZone(ZoneId.of("UTC"));
+		DateTimeFormatter dtf = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd['T'HH:mm:ss[.SSS]['Z']]")
+				.parseDefaulting(ChronoField.HOUR_OF_DAY, 0).parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+				.parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0).toFormatter().withZone(ZoneId.of("UTC"));
+		// DateTimeFormatter dtf =
+		// DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX][X]")
+		// .withZone(ZoneId.of("UTC"));
 
 		String source = "1971-01-01T00:00:00Z";
-		
-		ZonedDateTime result=ZonedDateTime.parse(source, dtf);
-		//TemporalAccessor result = dtf.parseBest(source, ZonedDateTime::from, LocalDateTime::from);
+
+		ZonedDateTime result = ZonedDateTime.parse(source, dtf);
+		// TemporalAccessor result = dtf.parseBest(source, ZonedDateTime::from,
+		// LocalDateTime::from);
 		System.out.println("before: " + source + " after: " + result);
 
-		
-		
 		source = "2019-01-16T16:49:56";
-		result=ZonedDateTime.parse(source, dtf);
+		result = ZonedDateTime.parse(source, dtf);
 		System.out.println("before: " + source + " after: " + result);
-		
+
 		source = "1971-01-01T00:00:00Z";
-		result=ZonedDateTime.parse(source, dtf);
+		result = ZonedDateTime.parse(source, dtf);
 		System.out.println("before: " + source + " after: " + result);
-		
+
 		source = "1971-01-01";
-		result=ZonedDateTime.parse(source, dtf);
+		result = ZonedDateTime.parse(source, dtf);
 		System.out.println("before: " + source + " after: " + result);
 	}
 

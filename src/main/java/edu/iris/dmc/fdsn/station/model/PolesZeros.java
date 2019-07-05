@@ -5,24 +5,33 @@
 // Generated on: 2019.05.15 at 01:37:05 PM PDT 
 //
 
-
 package edu.iris.dmc.fdsn.station.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAnyAttribute;
+import javax.xml.bind.annotation.XmlAnyElement;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.namespace.QName;
 
+import org.w3c.dom.Element;
 
 /**
- * Response: complex poles and zeros. Corresponds to SEED blockette
- * 				53.
+ * Response: complex poles and zeros. Corresponds to SEED blockette 53.
  * 
- * <p>Java class for PolesZerosType complex type.
+ * <p>
+ * Java class for PolesZerosType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="PolesZerosType">
@@ -52,148 +61,295 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PolesZerosType", propOrder = {
-    "pzTransferFunctionType",
-    "normalizationFactor",
-    "normalizationFrequency",
-    "zero",
-    "pole"
-})
-public class PolesZeros
-    extends BaseFilter
-{
+@XmlType(name = "PolesZerosType", propOrder = { "description", "inputUnits", "outputUnits", "any","pzTransferFunctionType", "normalizationFactor",
+		"normalizationFrequency", "zero", "pole" })
+public class PolesZeros extends BaseFilter {
+	@XmlAttribute(name = "resourceId")
+	protected String resourceId;
+	@XmlAttribute(name = "name")
+	protected String name;
+	@XmlAnyAttribute
+	private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+	@XmlElement(name = "Description")
+	protected String description;
+	@XmlElement(name = "InputUnits", required = true)
+	protected Units inputUnits;
+	@XmlElement(name = "OutputUnits", required = true)
+	protected Units outputUnits;
 
-    @XmlElement(name = "PzTransferFunctionType", required = true)
-    protected String pzTransferFunctionType;
-    @XmlElement(name = "NormalizationFactor", defaultValue = "1.0")
-    protected double normalizationFactor;
-    @XmlElement(name = "NormalizationFrequency", required = true)
-    protected Frequency normalizationFrequency;
-    @XmlElement(name = "Zero")
-    protected List<PoleZero> zero;
-    @XmlElement(name = "Pole")
-    protected List<PoleZero> pole;
+	@XmlElement(name = "PzTransferFunctionType", required = true)
+	protected String pzTransferFunctionType;
+	@XmlElement(name = "NormalizationFactor", defaultValue = "1.0")
+	protected double normalizationFactor;
+	@XmlElement(name = "NormalizationFrequency", required = true)
+	protected Frequency normalizationFrequency;
+	@XmlAnyElement(lax = true)
+	protected List<Object> any;
+	@XmlElement(name = "Zero")
+	protected List<PoleZero> zero;
+	@XmlElement(name = "Pole")
+	protected List<PoleZero> pole;
 
-    /**
-     * Gets the value of the pzTransferFunctionType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPzTransferFunctionType() {
-        return pzTransferFunctionType;
-    }
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Sets the value of the pzTransferFunctionType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPzTransferFunctionType(String value) {
-        this.pzTransferFunctionType = value;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Gets the value of the normalizationFactor property.
-     * 
-     */
-    public double getNormalizationFactor() {
-        return normalizationFactor;
-    }
+	/**
+	 * Gets the value of the inputUnits property.
+	 * 
+	 * @return possible object is {@link Units }
+	 * 
+	 */
+	public Units getInputUnits() {
+		return inputUnits;
+	}
 
-    /**
-     * Sets the value of the normalizationFactor property.
-     * 
-     */
-    public void setNormalizationFactor(double value) {
-        this.normalizationFactor = value;
-    }
+	/**
+	 * Sets the value of the inputUnits property.
+	 * 
+	 * @param value allowed object is {@link Units }
+	 * 
+	 */
+	public void setInputUnits(Units value) {
+		this.inputUnits = value;
+	}
 
-    /**
-     * Gets the value of the normalizationFrequency property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Frequency }
-     *     
-     */
-    public Frequency getNormalizationFrequency() {
-        return normalizationFrequency;
-    }
+	/**
+	 * Gets the value of the outputUnits property.
+	 * 
+	 * @return possible object is {@link Units }
+	 * 
+	 */
+	public Units getOutputUnits() {
+		return outputUnits;
+	}
 
-    /**
-     * Sets the value of the normalizationFrequency property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Frequency }
-     *     
-     */
-    public void setNormalizationFrequency(Frequency value) {
-        this.normalizationFrequency = value;
-    }
+	/**
+	 * Sets the value of the outputUnits property.
+	 * 
+	 * @param value allowed object is {@link Units }
+	 * 
+	 */
+	public void setOutputUnits(Units value) {
+		this.outputUnits = value;
+	}
 
-    /**
-     * Gets the value of the zero property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the zero property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getZero().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PoleZero }
-     * 
-     * 
-     */
-    public List<PoleZero> getZero() {
-        if (zero == null) {
-            zero = new ArrayList<PoleZero>();
-        }
-        return this.zero;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link Object }
+	 * 
+	 * 
+	 */
+	public List<Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the pole property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the pole property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPole().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link PoleZero }
-     * 
-     * 
-     */
-    public List<PoleZero> getPole() {
-        if (pole == null) {
-            pole = new ArrayList<PoleZero>();
-        }
-        return this.pole;
-    }
+	/**
+	 * Gets the value of the resourceId property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getResourceId() {
+		return resourceId;
+	}
+
+	/**
+	 * Sets the value of the resourceId property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setResourceId(String value) {
+		this.resourceId = value;
+	}
+
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
+
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed property
+	 * on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
+
+	/**
+	 * Gets the value of the pzTransferFunctionType property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPzTransferFunctionType() {
+		return pzTransferFunctionType;
+	}
+
+	/**
+	 * Sets the value of the pzTransferFunctionType property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setPzTransferFunctionType(String value) {
+		this.pzTransferFunctionType = value;
+	}
+
+	/**
+	 * Gets the value of the normalizationFactor property.
+	 * 
+	 */
+	public double getNormalizationFactor() {
+		return normalizationFactor;
+	}
+
+	/**
+	 * Sets the value of the normalizationFactor property.
+	 * 
+	 */
+	public void setNormalizationFactor(double value) {
+		this.normalizationFactor = value;
+	}
+
+	/**
+	 * Gets the value of the normalizationFrequency property.
+	 * 
+	 * @return possible object is {@link Frequency }
+	 * 
+	 */
+	public Frequency getNormalizationFrequency() {
+		return normalizationFrequency;
+	}
+
+	/**
+	 * Sets the value of the normalizationFrequency property.
+	 * 
+	 * @param value allowed object is {@link Frequency }
+	 * 
+	 */
+	public void setNormalizationFrequency(Frequency value) {
+		this.normalizationFrequency = value;
+	}
+
+	/**
+	 * Gets the value of the zero property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the zero property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getZero().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link PoleZero }
+	 * 
+	 * 
+	 */
+	public List<PoleZero> getZero() {
+		if (zero == null) {
+			zero = new ArrayList<PoleZero>();
+		}
+		return this.zero;
+	}
+
+	/**
+	 * Gets the value of the pole property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the pole property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getPole().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link PoleZero }
+	 * 
+	 * 
+	 */
+	public List<PoleZero> getPole() {
+		if (pole == null) {
+			pole = new ArrayList<PoleZero>();
+		}
+		return this.pole;
+	}
 
 }

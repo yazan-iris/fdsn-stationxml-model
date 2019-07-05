@@ -15,9 +15,11 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 public class ZonedDateTimeXmlAdapter extends XmlAdapter<String, ZonedDateTime> {
 
 	private final DateTimeFormatter dtf = new DateTimeFormatterBuilder()
-			.appendPattern("yyyy-MM-dd['T'HH:mm:ss[.SSSSSSSSS][.SSSSSS][.SSS]['Z']]").parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
-			.parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0).parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
-			.toFormatter().withZone(ZoneId.of("UTC")).withResolverStyle(ResolverStyle .LENIENT);;
+			.appendPattern("yyyy-MM-dd['T'HH:mm:ss[.SSSSSSSSS][.SSSSSS][.SSS][.SSSS]['Z']]")
+			.parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+			.parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+			.parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+			.toFormatter().withZone(ZoneId.of("UTC")).withResolverStyle(ResolverStyle .LENIENT);
 
 	@Override
 	public ZonedDateTime unmarshal(String stringValue) throws Exception {
