@@ -53,7 +53,7 @@ public class OffsetDateTimeXmlAdapterTest {
 		time = offsetDateTimeXmlAdapter.unmarshal("2015-10-22T05:36:11.176973Z");
 
 
-		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04");
+		//time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04");
 		
 		
 		time = offsetDateTimeXmlAdapter.unmarshal("2019-03-01T04:00:00.1");
