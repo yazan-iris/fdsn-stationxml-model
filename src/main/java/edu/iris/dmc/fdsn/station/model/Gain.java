@@ -52,15 +52,15 @@ import javax.xml.bind.annotation.XmlType;
 public class Gain implements ResponseType{
 
     @XmlElement(name = "Value")
-    protected double value;
+    protected Double value;
     @XmlElement(name = "Frequency")
-    protected double frequency;
+    protected Double frequency;
 
     /**
      * Gets the value of the value property.
      * 
      */
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
@@ -68,7 +68,7 @@ public class Gain implements ResponseType{
      * Sets the value of the value property.
      * 
      */
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
@@ -76,7 +76,7 @@ public class Gain implements ResponseType{
      * Gets the value of the frequency property.
      * 
      */
-    public double getFrequency() {
+    public Double getFrequency() {
         return frequency;
     }
 
@@ -84,7 +84,7 @@ public class Gain implements ResponseType{
      * Sets the value of the frequency property.
      * 
      */
-    public void setFrequency(double value) {
+    public void setFrequency(Double value) {
         this.frequency = value;
     }
 

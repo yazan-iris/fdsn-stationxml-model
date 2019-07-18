@@ -344,7 +344,7 @@ public class FIR
     public static class NumeratorCoefficient {
 
         @XmlValue
-        protected double value;
+        protected Double value;
         @XmlAttribute(name = "i")
         protected BigInteger i;
 
@@ -352,7 +352,7 @@ public class FIR
          * Gets the value of the value property.
          * 
          */
-        public double getValue() {
+        public Double getValue() {
             return value;
         }
 
@@ -360,7 +360,7 @@ public class FIR
          * Sets the value of the value property.
          * 
          */
-        public void setValue(double value) {
+        public void setValue(Double value) {
             this.value = value;
         }
 

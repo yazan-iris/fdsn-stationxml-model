@@ -105,11 +105,11 @@ public class Polynomial
     @XmlElement(name = "FrequencyUpperBound", required = true)
     protected Frequency frequencyUpperBound;
     @XmlElement(name = "ApproximationLowerBound")
-    protected double approximationLowerBound;
+    protected Double approximationLowerBound;
     @XmlElement(name = "ApproximationUpperBound")
-    protected double approximationUpperBound;
+    protected Double approximationUpperBound;
     @XmlElement(name = "MaximumError")
-    protected double maximumError;
+    protected Double maximumError;
     @XmlElement(name = "Coefficient", required = true)
     protected List<Polynomial.Coefficient> coefficient;
 
@@ -357,7 +357,7 @@ public class Polynomial
      * Gets the value of the approximationLowerBound property.
      * 
      */
-    public double getApproximationLowerBound() {
+    public Double getApproximationLowerBound() {
         return approximationLowerBound;
     }
 
@@ -365,7 +365,7 @@ public class Polynomial
      * Sets the value of the approximationLowerBound property.
      * 
      */
-    public void setApproximationLowerBound(double value) {
+    public void setApproximationLowerBound(Double value) {
         this.approximationLowerBound = value;
     }
 
@@ -373,7 +373,7 @@ public class Polynomial
      * Gets the value of the approximationUpperBound property.
      * 
      */
-    public double getApproximationUpperBound() {
+    public Double getApproximationUpperBound() {
         return approximationUpperBound;
     }
 
@@ -381,7 +381,7 @@ public class Polynomial
      * Sets the value of the approximationUpperBound property.
      * 
      */
-    public void setApproximationUpperBound(double value) {
+    public void setApproximationUpperBound(Double value) {
         this.approximationUpperBound = value;
     }
 
@@ -389,7 +389,7 @@ public class Polynomial
      * Gets the value of the maximumError property.
      * 
      */
-    public double getMaximumError() {
+    public Double getMaximumError() {
         return maximumError;
     }
 
@@ -397,7 +397,7 @@ public class Polynomial
      * Sets the value of the maximumError property.
      * 
      */
-    public void setMaximumError(double value) {
+    public void setMaximumError(Double value) {
         this.maximumError = value;
     }
 
@@ -455,7 +455,7 @@ public class Polynomial
     {
 
         @XmlAttribute(name = "number")
-        protected int number;
+        protected BigInteger number;
 
         /**
          * Gets the value of the number property.
@@ -465,7 +465,7 @@ public class Polynomial
          *     {@link BigInteger }
          *     
          */
-        public int getNumber() {
+        public BigInteger getNumber() {
             return number;
         }
 
@@ -477,7 +477,7 @@ public class Polynomial
          *     {@link BigInteger }
          *     
          */
-        public void setNumber(int value) {
+        public void setNumber(BigInteger value) {
             this.number = value;
         }
 

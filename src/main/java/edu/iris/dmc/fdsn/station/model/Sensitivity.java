@@ -57,11 +57,11 @@ public class Sensitivity
     @XmlElement(name = "OutputUnits", required = true)
     protected Units outputUnits;
     @XmlElement(name = "FrequencyStart")
-    protected double frequencyStart;
+    protected Double frequencyStart;
     @XmlElement(name = "FrequencyEnd")
-    protected double frequencyEnd;
+    protected Double frequencyEnd;
     @XmlElement(name = "FrequencyDBVariation")
-    protected double frequencyDBVariation;
+    protected Double frequencyDBVariation;
 
     /**
      * Gets the value of the inputUnits property.
@@ -119,7 +119,7 @@ public class Sensitivity
      *     {@link Double }
      *     
      */
-    public double getFrequencyStart() {
+    public Double getFrequencyStart() {
         return frequencyStart;
     }
 
@@ -131,7 +131,7 @@ public class Sensitivity
      *     {@link Double }
      *     
      */
-    public void setFrequencyStart(double value) {
+    public void setFrequencyStart(Double value) {
         this.frequencyStart = value;
     }
 
@@ -143,7 +143,7 @@ public class Sensitivity
      *     {@link Double }
      *     
      */
-    public double getFrequencyEnd() {
+    public Double getFrequencyEnd() {
         return frequencyEnd;
     }
 
@@ -155,7 +155,7 @@ public class Sensitivity
      *     {@link Double }
      *     
      */
-    public void setFrequencyEnd(double value) {
+    public void setFrequencyEnd(Double value) {
         this.frequencyEnd = value;
     }
 
@@ -167,7 +167,7 @@ public class Sensitivity
      *     {@link Double }
      *     
      */
-    public double getFrequencyDBVariation() {
+    public Double getFrequencyDBVariation() {
         return frequencyDBVariation;
     }
 
@@ -179,7 +179,7 @@ public class Sensitivity
      *     {@link Double }
      *     
      */
-    public void setFrequencyDBVariation(double value) {
+    public void setFrequencyDBVariation(Double value) {
         this.frequencyDBVariation = value;
     }
 	@Override

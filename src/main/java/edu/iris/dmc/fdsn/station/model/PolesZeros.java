@@ -80,7 +80,7 @@ public class PolesZeros extends BaseFilter {
 	@XmlElement(name = "PzTransferFunctionType", required = true)
 	protected String pzTransferFunctionType;
 	@XmlElement(name = "NormalizationFactor", defaultValue = "1.0")
-	protected double normalizationFactor;
+	protected Double normalizationFactor;
 	@XmlElement(name = "NormalizationFrequency", required = true)
 	protected Frequency normalizationFrequency;
 	@XmlAnyElement(lax = true)
@@ -262,7 +262,7 @@ public class PolesZeros extends BaseFilter {
 	 * Gets the value of the normalizationFactor property.
 	 * 
 	 */
-	public double getNormalizationFactor() {
+	public Double getNormalizationFactor() {
 		return normalizationFactor;
 	}
 
@@ -270,7 +270,7 @@ public class PolesZeros extends BaseFilter {
 	 * Sets the value of the normalizationFactor property.
 	 * 
 	 */
-	public void setNormalizationFactor(double value) {
+	public void setNormalizationFactor(Double value) {
 		this.normalizationFactor = value;
 	}
 

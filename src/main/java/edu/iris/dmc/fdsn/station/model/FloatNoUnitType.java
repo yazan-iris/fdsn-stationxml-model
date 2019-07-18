@@ -45,11 +45,11 @@ import javax.xml.bind.annotation.XmlValue;
 public class FloatNoUnitType {
 
     @XmlValue
-    protected double value;
+    protected Double value;
     @XmlAttribute(name = "plusError")
-    protected double plusError;
+    protected Double plusError;
     @XmlAttribute(name = "minusError")
-    protected double minusError;
+    protected Double minusError;
     @XmlAttribute(name = "measurementMethod")
     protected String measurementMethod;
 
@@ -57,7 +57,7 @@ public class FloatNoUnitType {
      * Gets the value of the value property.
      * 
      */
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
@@ -65,7 +65,7 @@ public class FloatNoUnitType {
      * Sets the value of the value property.
      * 
      */
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
@@ -77,7 +77,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public double getPlusError() {
+    public Double getPlusError() {
         return plusError;
     }
 
@@ -89,7 +89,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public void setPlusError(double value) {
+    public void setPlusError(Double value) {
         this.plusError = value;
     }
 
@@ -101,7 +101,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public double getMinusError() {
+    public Double getMinusError() {
         return minusError;
     }
 
@@ -113,7 +113,7 @@ public class FloatNoUnitType {
      *     {@link Double }
      *     
      */
-    public void setMinusError(double value) {
+    public void setMinusError(Double value) {
         this.minusError = value;
     }
 

@@ -73,7 +73,7 @@ public class AppTest extends TestCase {
 		Marshaller marshaller = jaxbContext.createMarshaller();
 		Station s = new Station();
 		Latitude latitude = new Latitude();
-		latitude.setValue(22);
+		latitude.setValue(Double.valueOf(22));
 		latitude.setDatum("Moon");
 		s.setLatitude(latitude);
 		n.getStations().add(s);

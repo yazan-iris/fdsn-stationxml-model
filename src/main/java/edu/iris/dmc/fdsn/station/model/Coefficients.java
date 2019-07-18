@@ -435,7 +435,7 @@ public class Coefficients
     {
 
         @XmlAttribute(name = "number")
-        protected int number;
+        protected BigInteger number;
 
         /**
          * Gets the value of the number property.
@@ -445,7 +445,7 @@ public class Coefficients
          *     {@link BigInteger }
          *     
          */
-        public int getNumber() {
+        public BigInteger getNumber() {
             return number;
         }
 
@@ -457,7 +457,7 @@ public class Coefficients
          *     {@link BigInteger }
          *     
          */
-        public void setNumber(int value) {
+        public void setNumber(BigInteger value) {
             this.number = value;
         }
 
