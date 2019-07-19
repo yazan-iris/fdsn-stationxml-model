@@ -196,10 +196,9 @@ public class FloatType {
 			return false;
 		FloatType other = (FloatType) obj;
 		return Objects.equals(measurementMethod, other.measurementMethod)
-				&& Double.doubleToLongBits(minusError) == Double.doubleToLongBits(other.minusError)
-				&& Double.doubleToLongBits(plusError) == Double.doubleToLongBits(other.plusError)
-				&& Objects.equals(unit, other.unit)
-				&& Double.doubleToLongBits(value) == Double.doubleToLongBits(other.value);
+				&& Objects.equals(minusError, other.minusError) && Objects.equals(plusError, other.plusError)
+				&& Objects.equals(unit, other.unit) && Objects.equals(value, other.value);
 	}
+
 
 }
