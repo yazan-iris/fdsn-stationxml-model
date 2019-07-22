@@ -62,10 +62,10 @@ public class FloatType {
     protected Double value;
     @XmlAttribute(name = "unit")
     protected String unit;
-    @XmlAttribute(name = "plusError")
-    protected Double plusError;
     @XmlAttribute(name = "minusError")
     protected Double minusError;
+    @XmlAttribute(name = "plusError")
+    protected Double plusError;
     @XmlAttribute(name = "measurementMethod")
     protected String measurementMethod;
 

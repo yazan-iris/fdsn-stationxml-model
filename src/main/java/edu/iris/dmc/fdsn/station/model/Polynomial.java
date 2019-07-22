@@ -449,7 +449,7 @@ public class Polynomial
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "")
+    @XmlType(propOrder= {"number"})
     public static class Coefficient
         extends FloatNoUnitType
     {

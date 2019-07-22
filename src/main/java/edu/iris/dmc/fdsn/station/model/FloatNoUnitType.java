@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlValue;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FloatNoUnitType", propOrder = {
-    "value"
+    "value", "minusError", "plusError", "measurementMethod"
 })
 @XmlSeeAlso({
     edu.iris.dmc.fdsn.station.model.Polynomial.Coefficient.class,
@@ -46,10 +46,10 @@ public class FloatNoUnitType {
 
     @XmlValue
     protected Double value;
-    @XmlAttribute(name = "plusError")
-    protected Double plusError;
     @XmlAttribute(name = "minusError")
     protected Double minusError;
+    @XmlAttribute(name = "plusError")
+    protected Double plusError;
     @XmlAttribute(name = "measurementMethod")
     protected String measurementMethod;
 
