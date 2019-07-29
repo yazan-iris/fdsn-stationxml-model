@@ -48,10 +48,11 @@ public class FloatNoUnitType {
 
     @XmlValue
     protected Double value;
-    @XmlAttribute(name = "plusError")
-    protected Double plusError;
+    
     @XmlAttribute(name = "minusError")
     protected Double minusError;
+    @XmlAttribute(name = "plusError")
+    protected Double plusError;
     @XmlAttribute(name = "measurementMethod")
     protected String measurementMethod;
 
