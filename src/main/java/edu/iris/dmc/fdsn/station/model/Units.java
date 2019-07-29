@@ -8,6 +8,8 @@
 
 package edu.iris.dmc.fdsn.station.model;
 
+import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -96,5 +98,22 @@ public class Units {
     public void setDescription(String value) {
         this.description = value;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Units other = (Units) obj;
+		return Objects.equals(description, other.description) && Objects.equals(name, other.name);
+	}
 
 }

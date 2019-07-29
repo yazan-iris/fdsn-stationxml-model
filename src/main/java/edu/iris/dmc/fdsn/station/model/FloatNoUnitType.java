@@ -8,6 +8,8 @@
 
 package edu.iris.dmc.fdsn.station.model;
 
+import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -140,5 +142,24 @@ public class FloatNoUnitType {
     public void setMeasurementMethod(String value) {
         this.measurementMethod = value;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(measurementMethod, minusError, plusError, value);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FloatNoUnitType other = (FloatNoUnitType) obj;
+		return Objects.equals(measurementMethod, other.measurementMethod)
+				&& Objects.equals(minusError, other.minusError) && Objects.equals(plusError, other.plusError)
+				&& Objects.equals(value, other.value);
+	}
 
 }

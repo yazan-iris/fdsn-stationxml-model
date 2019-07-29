@@ -75,4 +75,10 @@ public class Longitude
         this.datum = value;
     }
 
+	@Override
+	public String toString() {
+		return "Longitude [datum=" + datum + ", value=" + value + ", unit=" + unit + ", plusError=" + plusError
+				+ ", minusError=" + minusError + ", measurementMethod=" + measurementMethod + "]";
+	}
+
 }

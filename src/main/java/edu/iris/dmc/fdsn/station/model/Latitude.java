@@ -75,4 +75,10 @@ public class Latitude
         this.datum = value;
     }
 
+	@Override
+	public String toString() {
+		return "Latitude [datum=" + datum + ", value=" + value + ", unit=" + unit + ", plusError=" + plusError
+				+ ", minusError=" + minusError + ", measurementMethod=" + measurementMethod + "]";
+	}
+
 }

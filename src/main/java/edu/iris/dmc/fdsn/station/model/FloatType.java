@@ -195,10 +195,9 @@ public class FloatType {
 		if (getClass() != obj.getClass())
 			return false;
 		FloatType other = (FloatType) obj;
+
 		return Objects.equals(measurementMethod, other.measurementMethod)
 				&& Objects.equals(minusError, other.minusError) && Objects.equals(plusError, other.plusError)
 				&& Objects.equals(unit, other.unit) && Objects.equals(value, other.value);
 	}
-
-
 }

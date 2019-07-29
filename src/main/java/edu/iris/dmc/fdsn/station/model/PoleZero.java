@@ -9,6 +9,8 @@
 package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigInteger;
+import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -125,5 +127,23 @@ public class PoleZero {
     public void setNumber(BigInteger value) {
         this.number = value;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(imaginary, number, real);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PoleZero other = (PoleZero) obj;
+		return Objects.equals(imaginary, other.imaginary) && Objects.equals(number, other.number)
+				&& Objects.equals(real, other.real);
+	}
 
 }

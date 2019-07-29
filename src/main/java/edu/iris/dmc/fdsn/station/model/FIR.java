@@ -5,7 +5,6 @@
 // Generated on: 2019.05.15 at 01:37:05 PM PDT 
 //
 
-
 package edu.iris.dmc.fdsn.station.model;
 
 import java.math.BigInteger;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,14 +28,16 @@ import javax.xml.namespace.QName;
 
 import org.w3c.dom.Element;
 
-
 /**
- * Response: FIR filter. Corresponds to SEED blockette 61. FIR filters
- * 				are also commonly documented using the CoefficientsType element. 
+ * Response: FIR filter. Corresponds to SEED blockette 61. FIR filters are also
+ * commonly documented using the CoefficientsType element.
  * 
- * <p>Java class for FIRType complex type.
+ * <p>
+ * Java class for FIRType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="FIRType">
@@ -70,14 +72,9 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "FIRType", propOrder = {
-		"description", "inputUnits", "outputUnits", "any",
-    "symmetry",
-    "numeratorCoefficient"
-})
-public class FIR
-    extends BaseFilter
-{
+@XmlType(name = "FIRType", propOrder = { "description", "inputUnits", "outputUnits", "any", "symmetry",
+		"numeratorCoefficient" })
+public class FIR extends BaseFilter {
 	@XmlAttribute(name = "resourceId")
 	protected String resourceId;
 	@XmlAttribute(name = "name")
@@ -92,302 +89,292 @@ public class FIR
 	protected Units outputUnits;
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
-    @XmlElement(name = "Symmetry", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String symmetry;
-    @XmlElement(name = "NumeratorCoefficient")
-    protected List<FIR.NumeratorCoefficient> numeratorCoefficient;
+	@XmlElement(name = "Symmetry", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String symmetry;
+	@XmlElement(name = "NumeratorCoefficient")
+	protected List<FIR.NumeratorCoefficient> numeratorCoefficient;
 
+	/**
+	 * Gets the value of the description property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * Gets the value of the description property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * Sets the value of the description property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setDescription(String value) {
+		this.description = value;
+	}
 
-    /**
-     * Sets the value of the description property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
+	/**
+	 * Gets the value of the inputUnits property.
+	 * 
+	 * @return possible object is {@link Units }
+	 * 
+	 */
+	public Units getInputUnits() {
+		return inputUnits;
+	}
 
-    /**
-     * Gets the value of the inputUnits property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Units }
-     *     
-     */
-    public Units getInputUnits() {
-        return inputUnits;
-    }
+	/**
+	 * Sets the value of the inputUnits property.
+	 * 
+	 * @param value allowed object is {@link Units }
+	 * 
+	 */
+	public void setInputUnits(Units value) {
+		this.inputUnits = value;
+	}
 
-    /**
-     * Sets the value of the inputUnits property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Units }
-     *     
-     */
-    public void setInputUnits(Units value) {
-        this.inputUnits = value;
-    }
+	/**
+	 * Gets the value of the outputUnits property.
+	 * 
+	 * @return possible object is {@link Units }
+	 * 
+	 */
+	public Units getOutputUnits() {
+		return outputUnits;
+	}
 
-    /**
-     * Gets the value of the outputUnits property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Units }
-     *     
-     */
-    public Units getOutputUnits() {
-        return outputUnits;
-    }
+	/**
+	 * Sets the value of the outputUnits property.
+	 * 
+	 * @param value allowed object is {@link Units }
+	 * 
+	 */
+	public void setOutputUnits(Units value) {
+		this.outputUnits = value;
+	}
 
-    /**
-     * Sets the value of the outputUnits property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Units }
-     *     
-     */
-    public void setOutputUnits(Units value) {
-        this.outputUnits = value;
-    }
+	/**
+	 * Gets the value of the any property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the any property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAny().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Element }
+	 * {@link Object }
+	 * 
+	 * 
+	 */
+	public List<Object> getAny() {
+		if (any == null) {
+			any = new ArrayList<Object>();
+		}
+		return this.any;
+	}
 
-    /**
-     * Gets the value of the any property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the any property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAny().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Element }
-     * {@link Object }
-     * 
-     * 
-     */
-    public List<Object> getAny() {
-        if (any == null) {
-            any = new ArrayList<Object>();
-        }
-        return this.any;
-    }
+	/**
+	 * Gets the value of the resourceId property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getResourceId() {
+		return resourceId;
+	}
 
-    /**
-     * Gets the value of the resourceId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getResourceId() {
-        return resourceId;
-    }
+	/**
+	 * Sets the value of the resourceId property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setResourceId(String value) {
+		this.resourceId = value;
+	}
 
-    /**
-     * Sets the value of the resourceId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setResourceId(String value) {
-        this.resourceId = value;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Gets a map that contains attributes that aren't bound to any typed property
+	 * on this class.
+	 * 
+	 * <p>
+	 * the map is keyed by the name of the attribute and the value is the string
+	 * value of the attribute.
+	 * 
+	 * the map returned by this method is live, and you can add new attribute by
+	 * updating the map directly. Because of this design, there's no setter.
+	 * 
+	 * 
+	 * @return always non-null
+	 */
+	public Map<QName, String> getOtherAttributes() {
+		return otherAttributes;
+	}
 
-    /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
-     */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
-    }
-    /**
-     * Gets the value of the symmetry property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSymmetry() {
-        return symmetry;
-    }
+	/**
+	 * Gets the value of the symmetry property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getSymmetry() {
+		return symmetry;
+	}
 
-    /**
-     * Sets the value of the symmetry property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSymmetry(String value) {
-        this.symmetry = value;
-    }
+	/**
+	 * Sets the value of the symmetry property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setSymmetry(String value) {
+		this.symmetry = value;
+	}
 
-    /**
-     * Gets the value of the numeratorCoefficient property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the numeratorCoefficient property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getNumeratorCoefficient().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link FIR.NumeratorCoefficient }
-     * 
-     * 
-     */
-    public List<FIR.NumeratorCoefficient> getNumeratorCoefficient() {
-        if (numeratorCoefficient == null) {
-            numeratorCoefficient = new ArrayList<FIR.NumeratorCoefficient>();
-        }
-        return this.numeratorCoefficient;
-    }
+	/**
+	 * Gets the value of the numeratorCoefficient property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot.
+	 * Therefore any modification you make to the returned list will be present
+	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
+	 * for the numeratorCoefficient property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getNumeratorCoefficient().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link FIR.NumeratorCoefficient }
+	 * 
+	 * 
+	 */
+	public List<FIR.NumeratorCoefficient> getNumeratorCoefficient() {
+		if (numeratorCoefficient == null) {
+			numeratorCoefficient = new ArrayList<FIR.NumeratorCoefficient>();
+		}
+		return this.numeratorCoefficient;
+	}
 
+	/**
+	 * <p>
+	 * Java class for anonymous complex type.
+	 * 
+	 * <p>
+	 * The following schema fragment specifies the expected content contained within
+	 * this class.
+	 * 
+	 * <pre>
+	 * &lt;complexType>
+	 *   &lt;simpleContent>
+	 *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>double">
+	 *       &lt;attribute name="i" type="{http://www.w3.org/2001/XMLSchema}integer" />
+	 *     &lt;/extension>
+	 *   &lt;/simpleContent>
+	 * &lt;/complexType>
+	 * </pre>
+	 * 
+	 * 
+	 */
+	@XmlAccessorType(XmlAccessType.FIELD)
+	@XmlType(name = "", propOrder = { "value" })
+	public static class NumeratorCoefficient {
 
-    /**
-     * <p>Java class for anonymous complex type.
-     * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
-     * <pre>
-     * &lt;complexType>
-     *   &lt;simpleContent>
-     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>double">
-     *       &lt;attribute name="i" type="{http://www.w3.org/2001/XMLSchema}integer" />
-     *     &lt;/extension>
-     *   &lt;/simpleContent>
-     * &lt;/complexType>
-     * </pre>
-     * 
-     * 
-     */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "value"
-    })
-    public static class NumeratorCoefficient {
+		@XmlValue
+		protected Double value;
+		@XmlAttribute(name = "i")
+		protected BigInteger i;
 
-        @XmlValue
-        protected Double value;
-        @XmlAttribute(name = "i")
-        protected BigInteger i;
+		/**
+		 * Gets the value of the value property.
+		 * 
+		 */
+		public Double getValue() {
+			return value;
+		}
 
-        /**
-         * Gets the value of the value property.
-         * 
-         */
-        public Double getValue() {
-            return value;
-        }
+		/**
+		 * Sets the value of the value property.
+		 * 
+		 */
+		public void setValue(Double value) {
+			this.value = value;
+		}
 
-        /**
-         * Sets the value of the value property.
-         * 
-         */
-        public void setValue(Double value) {
-            this.value = value;
-        }
+		/**
+		 * Gets the value of the i property.
+		 * 
+		 * @return possible object is {@link BigInteger }
+		 * 
+		 */
+		public BigInteger getI() {
+			return i;
+		}
 
-        /**
-         * Gets the value of the i property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link BigInteger }
-         *     
-         */
-        public BigInteger getI() {
-            return i;
-        }
+		/**
+		 * Sets the value of the i property.
+		 * 
+		 * @param value allowed object is {@link BigInteger }
+		 * 
+		 */
+		public void setI(BigInteger value) {
+			this.i = value;
+		}
 
-        /**
-         * Sets the value of the i property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link BigInteger }
-         *     
-         */
-        public void setI(BigInteger value) {
-            this.i = value;
-        }
+		@Override
+		public int hashCode() {
+			return Objects.hash(i, value);
+		}
 
-    }
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			NumeratorCoefficient other = (NumeratorCoefficient) obj;
+			return Objects.equals(i, other.i) && Objects.equals(value, other.value);
+		}
+
+	}
 
 }
