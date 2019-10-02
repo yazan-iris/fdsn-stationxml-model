@@ -85,7 +85,7 @@ public class Equipment {
 	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 	protected ZonedDateTime removalDate;
 	@XmlElement(name = "CalibrationDate")
-	@XmlSchemaType(name = "dateTime")
+	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 	protected List<ZonedDateTime> calibrationDate;
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
