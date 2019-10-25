@@ -46,9 +46,6 @@ import javax.xml.bind.annotation.XmlType;
     "value",
     "frequency"
 })
-@XmlSeeAlso({
-    Sensitivity.class
-})
 public class Gain implements ResponseType{
 
     @XmlElement(name = "Value")

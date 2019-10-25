@@ -116,4 +116,9 @@ public class Units {
 		return Objects.equals(description, other.description) && Objects.equals(name, other.name);
 	}
 
+	@Override
+	public String toString() {
+		return "Units [name=" + name + ", description=" + description + "]";
+	}
+
 }

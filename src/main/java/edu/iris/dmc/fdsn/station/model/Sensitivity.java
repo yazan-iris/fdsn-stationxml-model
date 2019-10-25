@@ -5,7 +5,6 @@
 // Generated on: 2019.05.15 at 01:37:05 PM PDT 
 //
 
-
 package edu.iris.dmc.fdsn.station.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,16 +12,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * Sensitivity and frequency ranges. The FrequencyRangeGroup is an
- * 				optional construct that defines a pass band in Hertz (FrequencyStart and
- * 				FrequencyEnd) in which the SensitivityValue is valid within the number of decibels
- * 				specified in FrequencyDBVariation. 
+ * Sensitivity and frequency ranges. The FrequencyRangeGroup is an optional
+ * construct that defines a pass band in Hertz (FrequencyStart and FrequencyEnd)
+ * in which the SensitivityValue is valid within the number of decibels
+ * specified in FrequencyDBVariation.
  * 
- * <p>Java class for SensitivityType complex type.
+ * <p>
+ * Java class for SensitivityType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="SensitivityType">
@@ -41,147 +42,157 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SensitivityType", propOrder = {
-    "inputUnits",
-    "outputUnits",
-    "frequencyStart",
-    "frequencyEnd",
-    "frequencyDBVariation"
-})
-public class Sensitivity
-    extends Gain
-{
+@XmlType(name = "SensitivityType", propOrder = { "value", "frequency", "inputUnits", "outputUnits", "frequencyStart",
+		"frequencyEnd", "frequencyDBVariation" })
+public class Sensitivity implements ResponseType {
 
-    @XmlElement(name = "InputUnits", required = true)
-    protected Units inputUnits;
-    @XmlElement(name = "OutputUnits", required = true)
-    protected Units outputUnits;
-    @XmlElement(name = "FrequencyStart")
-    protected Double frequencyStart;
-    @XmlElement(name = "FrequencyEnd")
-    protected Double frequencyEnd;
-    @XmlElement(name = "FrequencyDBVariation")
-    protected Double frequencyDBVariation;
+	@XmlElement(name = "Value")
+	protected Double value;
+	@XmlElement(name = "Frequency")
+	protected Double frequency;
+	@XmlElement(name = "InputUnits", required = true)
+	protected Units inputUnits;
+	@XmlElement(name = "OutputUnits", required = true)
+	protected Units outputUnits;
+	@XmlElement(name = "FrequencyStart")
+	protected Double frequencyStart;
+	@XmlElement(name = "FrequencyEnd")
+	protected Double frequencyEnd;
+	@XmlElement(name = "FrequencyDBVariation")
+	protected Double frequencyDBVariation;
 
-    /**
-     * Gets the value of the inputUnits property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Units }
-     *     
-     */
-    public Units getInputUnits() {
-        return inputUnits;
-    }
+	/**
+	 * Gets the value of the value property.
+	 * 
+	 */
+	public Double getValue() {
+		return value;
+	}
 
-    /**
-     * Sets the value of the inputUnits property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Units }
-     *     
-     */
-    public void setInputUnits(Units value) {
-        this.inputUnits = value;
-    }
+	/**
+	 * Sets the value of the value property.
+	 * 
+	 */
+	public void setValue(Double value) {
+		this.value = value;
+	}
 
-    /**
-     * Gets the value of the outputUnits property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Units }
-     *     
-     */
-    public Units getOutputUnits() {
-        return outputUnits;
-    }
+	/**
+	 * Gets the value of the frequency property.
+	 * 
+	 */
+	public Double getFrequency() {
+		return frequency;
+	}
 
-    /**
-     * Sets the value of the outputUnits property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Units }
-     *     
-     */
-    public void setOutputUnits(Units value) {
-        this.outputUnits = value;
-    }
+	/**
+	 * Sets the value of the frequency property.
+	 * 
+	 */
+	public void setFrequency(Double value) {
+		this.frequency = value;
+	}
 
-    /**
-     * Gets the value of the frequencyStart property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getFrequencyStart() {
-        return frequencyStart;
-    }
+	/**
+	 * Gets the value of the inputUnits property.
+	 * 
+	 * @return possible object is {@link Units }
+	 * 
+	 */
+	public Units getInputUnits() {
+		return inputUnits;
+	}
 
-    /**
-     * Sets the value of the frequencyStart property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setFrequencyStart(Double value) {
-        this.frequencyStart = value;
-    }
+	/**
+	 * Sets the value of the inputUnits property.
+	 * 
+	 * @param value allowed object is {@link Units }
+	 * 
+	 */
+	public void setInputUnits(Units value) {
+		this.inputUnits = value;
+	}
 
-    /**
-     * Gets the value of the frequencyEnd property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getFrequencyEnd() {
-        return frequencyEnd;
-    }
+	/**
+	 * Gets the value of the outputUnits property.
+	 * 
+	 * @return possible object is {@link Units }
+	 * 
+	 */
+	public Units getOutputUnits() {
+		return outputUnits;
+	}
 
-    /**
-     * Sets the value of the frequencyEnd property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setFrequencyEnd(Double value) {
-        this.frequencyEnd = value;
-    }
+	/**
+	 * Sets the value of the outputUnits property.
+	 * 
+	 * @param value allowed object is {@link Units }
+	 * 
+	 */
+	public void setOutputUnits(Units value) {
+		this.outputUnits = value;
+	}
 
-    /**
-     * Gets the value of the frequencyDBVariation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
-     */
-    public Double getFrequencyDBVariation() {
-        return frequencyDBVariation;
-    }
+	/**
+	 * Gets the value of the frequencyStart property.
+	 * 
+	 * @return possible object is {@link Double }
+	 * 
+	 */
+	public Double getFrequencyStart() {
+		return frequencyStart;
+	}
 
-    /**
-     * Sets the value of the frequencyDBVariation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
-     */
-    public void setFrequencyDBVariation(Double value) {
-        this.frequencyDBVariation = value;
-    }
+	/**
+	 * Sets the value of the frequencyStart property.
+	 * 
+	 * @param value allowed object is {@link Double }
+	 * 
+	 */
+	public void setFrequencyStart(Double value) {
+		this.frequencyStart = value;
+	}
+
+	/**
+	 * Gets the value of the frequencyEnd property.
+	 * 
+	 * @return possible object is {@link Double }
+	 * 
+	 */
+	public Double getFrequencyEnd() {
+		return frequencyEnd;
+	}
+
+	/**
+	 * Sets the value of the frequencyEnd property.
+	 * 
+	 * @param value allowed object is {@link Double }
+	 * 
+	 */
+	public void setFrequencyEnd(Double value) {
+		this.frequencyEnd = value;
+	}
+
+	/**
+	 * Gets the value of the frequencyDBVariation property.
+	 * 
+	 * @return possible object is {@link Double }
+	 * 
+	 */
+	public Double getFrequencyDBVariation() {
+		return frequencyDBVariation;
+	}
+
+	/**
+	 * Sets the value of the frequencyDBVariation property.
+	 * 
+	 * @param value allowed object is {@link Double }
+	 * 
+	 */
+	public void setFrequencyDBVariation(Double value) {
+		this.frequencyDBVariation = value;
+	}
+
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
