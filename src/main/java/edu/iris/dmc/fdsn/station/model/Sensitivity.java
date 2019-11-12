@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SensitivityType", propOrder = { "value", "frequency", "inputUnits", "outputUnits", "frequencyStart",
 		"frequencyEnd", "frequencyDBVariation" })
-public class Sensitivity implements ResponseType {
+public class Sensitivity implements Gain,ResponseType {
 
 	@XmlElement(name = "Value")
 	protected Double value;

@@ -297,11 +297,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Gain }
+     * Create an instance of {@link StageGain }
      * 
      */
-    public Gain createGainType() {
-        return new Gain();
+    public StageGain createGainType() {
+        return new StageGain();
     }
 
     /**

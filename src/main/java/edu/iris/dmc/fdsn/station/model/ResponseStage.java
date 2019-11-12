@@ -80,7 +80,7 @@ public class ResponseStage {
 	@XmlElement(name = "Decimation")
 	protected Decimation decimation;
 	@XmlElement(name = "StageGain")
-	protected Gain stageGain;
+	protected StageGain stageGain;
 	@XmlElement(name = "Polynomial")
 	protected Polynomial polynomial;
 	@XmlAnyElement(lax = true)
@@ -206,20 +206,20 @@ public class ResponseStage {
 	/**
 	 * Gets the value of the stageGain property.
 	 * 
-	 * @return possible object is {@link Gain }
+	 * @return possible object is {@link StageGain }
 	 * 
 	 */
-	public Gain getStageGain() {
+	public StageGain getStageGain() {
 		return stageGain;
 	}
 
 	/**
 	 * Sets the value of the stageGain property.
 	 * 
-	 * @param value allowed object is {@link Gain }
+	 * @param value allowed object is {@link StageGain }
 	 * 
 	 */
-	public void setStageGain(Gain value) {
+	public void setStageGain(StageGain value) {
 		this.stageGain = value;
 	}
 
