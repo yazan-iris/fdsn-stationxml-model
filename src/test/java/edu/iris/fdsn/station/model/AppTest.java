@@ -12,11 +12,11 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import edu.iris.dmc.fdsn.station.model.FDSNStationXML;
-import edu.iris.dmc.fdsn.station.model.Latitude;
-import edu.iris.dmc.fdsn.station.model.Network;
-import edu.iris.dmc.fdsn.station.model.ObjectFactory;
-import edu.iris.dmc.fdsn.station.model.Station;
+import edu.iris.station.model.FDSNStationXML;
+import edu.iris.station.model.Latitude;
+import edu.iris.station.model.Network;
+import edu.iris.station.model.ObjectFactory;
+import edu.iris.station.model.Station;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -53,7 +53,7 @@ public class AppTest extends TestCase {
 	public void testApp2() throws JAXBException, FileNotFoundException {
 
 		try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("iu.xml");) {
-			JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.dmc.fdsn.station.model.ObjectFactory.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.station.model.ObjectFactory.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			FDSNStationXML doc = (FDSNStationXML) jaxbUnmarshaller.unmarshal(inputStream);
 		} catch (IOException e) {
@@ -69,7 +69,7 @@ public class AppTest extends TestCase {
 		n.setCode("Test");
 		doc.getNetwork().add(n);
 
-		JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.dmc.fdsn.station.model.ObjectFactory.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.station.model.ObjectFactory.class);
 		Marshaller marshaller = jaxbContext.createMarshaller();
 		Station s = new Station();
 		Latitude latitude = new Latitude();

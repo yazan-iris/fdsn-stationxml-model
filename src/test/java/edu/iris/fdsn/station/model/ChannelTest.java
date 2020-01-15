@@ -6,8 +6,8 @@ import javax.xml.bind.Marshaller;
 
 import org.junit.Test;
 
-import edu.iris.dmc.fdsn.station.model.Channel;
-import edu.iris.dmc.fdsn.station.model.Equipment;
+import edu.iris.station.model.Channel;
+import edu.iris.station.model.Equipment;
 
 public class ChannelTest {
 

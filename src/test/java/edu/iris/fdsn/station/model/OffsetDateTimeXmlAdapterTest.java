@@ -16,7 +16,7 @@ import javax.xml.bind.DatatypeConverter;
 
 import org.junit.Test;
 
-import edu.iris.dmc.fdsn.station.model.ZonedDateTimeXmlAdapter;
+import edu.iris.station.model.ZonedDateTimeXmlAdapter;
 
 public class OffsetDateTimeXmlAdapterTest {
 

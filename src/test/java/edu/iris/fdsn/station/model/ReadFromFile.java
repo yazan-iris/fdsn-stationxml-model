@@ -11,7 +11,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.junit.Test;
 
-import edu.iris.dmc.fdsn.station.model.FDSNStationXML;
+import edu.iris.station.model.FDSNStationXML;
 
 public class ReadFromFile {
 
@@ -19,7 +19,7 @@ public class ReadFromFile {
 	public void testApp2() throws JAXBException, FileNotFoundException {
 
 		try (InputStream inputStream = new FileInputStream("/Users/Suleiman/C1_LL07.XML");) {
-			JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.dmc.fdsn.station.model.ObjectFactory.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(edu.iris.station.model.ObjectFactory.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			FDSNStationXML doc = (FDSNStationXML) jaxbUnmarshaller.unmarshal(inputStream);
 
