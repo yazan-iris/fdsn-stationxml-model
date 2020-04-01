@@ -3,7 +3,7 @@
 
 	<groupId>edu.iris.dmc</groupId>
 	<artifactId>fdsn-stationxml-model</artifactId>
-	<version>1.6.0-RC1</version>
+	<version>1.6.0-RC2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>fdsn station xml model</name>
