@@ -1,11 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>edu.iris.dmc</groupId>
 	<artifactId>fdsn-stationxml-model</artifactId>
-	<version>1.5.1-RC1</version>
+	<version>1.6.0-RC1</version>
 	<packaging>jar</packaging>
 
 	<name>fdsn station xml model</name>
@@ -20,10 +18,11 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:http://somerepository.com/svn_repo/trunk</connection>
-		<developerConnection>scm:svn:https://somerepository.com/svn_repo/trunk</developerConnection>
-		<url>http://somerepository.com/view.cvs</url>
-	</scm>
+		<connection>scm:git:https://github.com/yazan-iris/fdsn-stationxml-model.git</connection>
+		<developerConnection>scm:git:https://github.com/yazan-iris/fdsn-stationxml-model.git</developerConnection>
+		<url>https://github.com/yazan-iris/fdsn-stationxml-model.git</url>
+	  <tag>fdsn-stationxml-model-1.6.0-RC1</tag>
+  </scm>
 	<developers>
 		<developer>
 			<name>Yazan Suleiman</name>
@@ -47,74 +46,86 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-
-
-			<plugin>
-				<!-- NOTE: We don't need a groupId specification because the group is 
-					org.apache.maven.plugins ...which is assumed by default. -->
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2.1</version>
-				<configuration>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.2.1</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.7</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-
-	<profiles>
+	         <plugins>
+             <plugin>
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <version>3.7.0</version>
+                 <configuration>
+                     <source>1.8</source>
+                     <target>1.8</target>
+                 </configuration>
+             </plugin>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-release-plugin</artifactId>
+                 <version>2.5.3</version>
+                 <configuration>
+                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                     <useReleaseProfile>false</useReleaseProfile>
+                     <releaseProfiles>release</releaseProfiles>
+                     <goals>deploy</goals>
+                     <checkModificationExcludes>
+                         <checkModificationExclude>pom.xml</checkModificationExclude>
+                     </checkModificationExcludes>
+                 </configuration>
+             </plugin>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-source-plugin</artifactId>
+                 <version>3.2.1</version>
+                 <executions>
+                     <execution>
+                         <id>attach-sources</id>
+                         <goals>
+                             <goal>jar</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+             </plugin>
+             <plugin>
+                 <groupId>org.sonatype.plugins</groupId>
+                 <artifactId>nexus-staging-maven-plugin</artifactId>
+                 <version>1.6.7</version>
+                 <extensions>true</extensions>
+                 <configuration>
+                     <serverId>ossrh</serverId>
+                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                 </configuration>
+             </plugin>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-javadoc-plugin</artifactId>
+                 <version>3.0.1</version>
+                 <executions>
+                     <execution>
+                         <id>attach-javadocs</id>
+                         <goals>
+                             <goal>jar</goal>
+                         </goals>
+                         <configuration>
+                             <doclint>none</doclint>
+                         </configuration>
+                     </execution>
+                 </executions>
+             </plugin>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-gpg-plugin</artifactId>
+                 <version>1.5</version>
+                 <executions>
+                     <execution>
+                         <id>sign-artifacts</id>
+                         <phase>verify</phase>
+                         <goals>
+                             <goal>sign</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+             </plugin>
+     </plugins>
+     </build>
+	 <profiles>
 		<profile>
 			<id>disable-java8-doclint</id>
 			<activation>
@@ -124,10 +135,8 @@
 				<additionalparam>-Xdoclint:none</additionalparam>
 			</properties>
 		</profile>
-	</profiles>
-
+    </profiles>
 	<dependencies>
-
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
@@ -157,15 +166,14 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/releases</url>
-		</repository>
-	</distributionManagement>
+     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+          </repository>
+    </distributionManagement>
 </project>
