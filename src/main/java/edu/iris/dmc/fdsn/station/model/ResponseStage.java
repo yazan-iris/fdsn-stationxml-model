@@ -65,8 +65,9 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ResponseStageType", propOrder = { "polesZeros", "coefficients", "responseList", "fir", "decimation",
-		"stageGain", "polynomial", "any" })
+// Controls the ordering of the output stationxml stages. 
+@XmlType(name = "ResponseStageType", propOrder = { "polesZeros", "coefficients", "responseList", "fir",  "polynomial", 
+		"decimation","stageGain",  "any" })
 public class ResponseStage {
 
 	@XmlElement(name = "PolesZeros")
@@ -77,12 +78,12 @@ public class ResponseStage {
 	protected ResponseList responseList;
 	@XmlElement(name = "FIR")
 	protected FIR fir;
+	@XmlElement(name = "Polynomial")
+	protected Polynomial polynomial;
 	@XmlElement(name = "Decimation")
 	protected Decimation decimation;
 	@XmlElement(name = "StageGain")
 	protected StageGain stageGain;
-	@XmlElement(name = "Polynomial")
-	protected Polynomial polynomial;
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
 	@XmlAttribute(name = "number", required = true)
