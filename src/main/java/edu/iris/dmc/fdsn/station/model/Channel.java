@@ -63,6 +63,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *           &lt;/simpleType>
  *         &lt;/element>
  *         &lt;group ref="{http://www.fdsn.org/xml/station/1}SampleRateGroup" minOccurs="0"/>
+ *         &lt;element name="StorageFormat" type={http://www.w3.org/2001/XMLSchema-instance}"string" minOccurs="0">
  *         &lt;element name="ClockDrift" minOccurs="0">
  *           &lt;complexType>
  *             &lt;simpleContent>
@@ -90,7 +91,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ChannelType", propOrder = { "externalReference", "latitude", "longitude", "elevation", "depth",
-		"azimuth", "dip", "waterLevel", "type", "sampleRate", "sampleRateRatio", "clockDrift", "calibrationUnits",
+		"azimuth", "dip", "waterLevel", "type", "sampleRate", "sampleRateRatio", "storageFormat", "clockDrift", "calibrationUnits",
 		"sensor", "preAmplifier", "dataLogger", "equipment", "response" })
 public class Channel extends BaseNodeType {
 
@@ -131,6 +132,8 @@ public class Channel extends BaseNodeType {
 	protected List<Equipment> equipment;
 	@XmlElement(name = "Response")
 	protected Response response;
+	@XmlElement(name = "StorageFormat")
+	protected String storageFormat;
 	@XmlAttribute(name = "locationCode", required = true)
 	protected String locationCode;
 
@@ -550,11 +553,31 @@ public class Channel extends BaseNodeType {
 	}
 
 	/**
-	 * Gets the value of the locationCode property.
+	 * Gets the value of the storage format property.
 	 * 
-	 * @return possible object is {@link String }
+	 * @return possible object is {@link Channel.StorageFormat }
 	 * 
 	 */
+	public String getStorageformat() {
+		return storageFormat;
+	}
+
+	/**
+	 * Sets the value of the storage property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	
+	public void setStorageFormat(String value) {
+		this.storageFormat = value;
+	}
+	/**
+    * Gets the value of the locationCode property.
+    * 
+    * @return possible object is {@link String }
+    * 
+    */
 	public String getLocationCode() {
 		return locationCode;
 	}
