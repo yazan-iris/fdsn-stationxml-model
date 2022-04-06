@@ -85,9 +85,9 @@ public class Equipment {
 	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
 	protected ZonedDateTime removalDate;
 	@XmlElement(name = "CalibrationDate")
-	@XmlSchemaType(name = "dateTime")
+	//@XmlSchemaType(name = "dateTime")
 	@XmlJavaTypeAdapter(ZonedDateTimeXmlAdapter.class)
-	protected List<ZonedDateTime> calibrationDate;
+	protected ZonedDateTime calibrationDate;
 	@XmlAnyElement(lax = true)
 	protected List<Object> any;
 	@XmlAttribute(name = "resourceId")
@@ -289,13 +289,18 @@ public class Equipment {
 	 * 
 	 * 
 	 */
-	public List<ZonedDateTime> getCalibrationDate() {
-		if (calibrationDate == null) {
-			calibrationDate = new ArrayList<>();
-		}
+	public ZonedDateTime getCalibrationDate() {
 		return this.calibrationDate;
 	}
-
+	/**
+	 * Sets the value of the removalDate property.
+	 *
+	 * @param value allowed object is {@link XMLGregorianCalendar }
+	 *
+	 */
+	public void setCalibrationDate(ZonedDateTime value) {
+		this.calibrationDate = value;
+	}
 	/**
 	 * Gets the value of the any property.
 	 * 
@@ -304,10 +309,10 @@ public class Equipment {
 	 * Therefore any modification you make to the returned list will be present
 	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
 	 * for the any property.
-	 * 
+	 *
 	 * <p>
 	 * For example, to add a new item, do as follows:
-	 * 
+	 *
 	 * <pre>
 	 * getAny().add(newItem);
 	 * </pre>
@@ -319,6 +324,7 @@ public class Equipment {
 	 * 
 	 * 
 	 */
+
 	public List<Object> getAny() {
 		if (any == null) {
 			any = new ArrayList<Object>();
